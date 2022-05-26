@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # --- Use this to create a loopback device ---
 # pacmd load-module module-null-sink sink_name=MySink
 # pacmd update-sink-proplist MySink device.description=MySink
@@ -43,10 +43,13 @@ mkdir ~/gnuradio/bin
 echo "mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && make install && cd .. && rm -rf builddir" > ~/gnuradio/bin/build.sh
 chmod +x ~/gnuradio/bin/build.sh
 echo "source /home/$USER/gnuradio/setup_env.sh" >> ~/.bashrc
-source ~/gnuradio/setup_env.sh
+cd ~/gnuradio
+source ./setup_env.sh
 cd ~/gnuradio/src
+mkdir hw
+cd hw
 git clone https://github.com/EttusResearch/uhd.git
-cd ~/gnuradio/src/uhd/host
+cd ~/gnuradio/src/hw/uhd/host
 mkdir builddir
 cd builddir
 if architecture="arm64" || architecture="arm"
@@ -59,7 +62,6 @@ make -j`nproc`
 sudo make install
 sudo mkdir -p /home/$USER/gnuradio/share/uhd/images
 sudo chown $USER:$USER -R /home/$USER/gnuradio
-
 uhd_images_downloader
 cd ..
 rm -rf builddir
@@ -89,16 +91,15 @@ git clone https://github.com/greatscottgadgets/libbtbb --recursive
 git clone https://github.com/osmocom/libosmo-dsp --recursive
 git clone https://github.com/osmocom/osmo-ir77 --recursive
 cd liquid-dsp && ./bootstrap.sh && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
-cd rtaudio &&  build.sh && cd ..
-cd volk &&  build.sh && cd ..
+cd rtaudio && build.sh && cd ..
+cd volk && build.sh && cd ..
 volk_profile
 cd libbtbb && build.sh && cd ..
 cd libosmo-dsp && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
 cd osmo-ir77/codec && make && cp ir77_ambe_decode ~/gnuradio/bin/ && make clean && cd ../..
 
 echo "Building hw source"
-mkdir hw
-cd hw
+cd ~/gnuradio/src/hw
 sudo chown -R $USER:root /lib/udev/rules.d
 sudo chown -R $USER:root /etc/udev/rules.d
 
@@ -114,40 +115,30 @@ git clone https://github.com/Nuand/bladeRF --recursive
 git clone https://github.com/greatscottgadgets/hackrf --recursive
 
 cd rtl-sdr-blog
-mkdir builddir
-cd builddir
-cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio -DINSTALL_UDEV_RULES=ON
-make -j`nproc`
-sudo make install
-cd ..
-rm -rf builddir
-cd ..
+mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio -DINSTALL_UDEV_RULES=ON && make -j`nproc` && sudo make install && cd .. && rm -rf builddir && cd ..
 
-cd SoapySDR
-build.sh
-cd ..
+cd SoapySDR && build.sh && cd ..
 
-cd LimeSuite
-git checkout stable
-mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio && make -j$(nproc) && make install && cd ../udev-rules && sudo bash install.sh && cd ..
+cd LimeSuite && git checkout stable && mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio && make -j$(nproc) && make install && cd .. && rm -rf builddir 
+cd udev-rules && sudo ./install.sh && cd ..
+cd ~/gnuradio/src/hw
 
 cd airspyhf && build.sh && cd ..
 cd airspyone_host && build.sh && cd ..
-#cd libaio && make -j `nproc` && sudo make install && make clean && cd ..
 cd libiio && mkdir build2 && cd build2 && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && make install && cd .. && rm -rf build2 && cd ..
 cd libad9361-iio && build.sh && cd ..
 cd bladeRF/host && build.sh && cd ../..
 cd libosmocore && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
 cd hackrf/host && build.sh && cd ../..
-if $architecture="arm64"
+if architecture="arm64"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-3.07.1.run
 	chmod +x SDRplay_RSP_API-ARM64-3.07.1.run
-elif $architecture="arm"
+elif architecture="arm"
+then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM32-3.07.2.run
 	chmod +x SDRplay_RSP_API-ARM32-3.07.2.run
-then
-elif $architecture="386"
+elif architecture="386"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run
 	chmod +x SDRplay_RSP_API-Linux-3.07.1.run
@@ -273,11 +264,13 @@ for i in `ls -d */`;do echo $i && cd $i ; build.sh ; cd ..; done
 cd ..
 
 echo "Installing apps"
-audo apt install fldigi -y
+sudo apt install fldigi -y
 pip3 install urh crcmod
 
-cd utils
-cd SDRPlusPlus && mdkr build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
+mkdir ~/gnuradio/utils
+cd ~/gnuradio/utils
+git clone https://github.com/AlexandreRouma/SDRPlusPlus --recursive
+cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
 
 if architecture="arm"
 then
