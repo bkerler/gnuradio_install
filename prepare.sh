@@ -272,6 +272,8 @@ cd ~/gnuradio/utils
 git clone https://github.com/AlexandreRouma/SDRPlusPlus --recursive
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
 
+#git clone https://github.com/BatchDrake/SigDigger --recursive
+
 if architecture="arm"
 then
 sudo swapoff /swapfile
