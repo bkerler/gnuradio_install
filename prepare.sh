@@ -176,7 +176,7 @@ mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
 git clone https://github.com/bkerler/gr-compress -b maint-3.10
 git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
-git clone https://github.com/argilo/gr-flarm -b maint-3.10
+git clone https://github.com/argilo/gr-flarm -b master
 git clone https://github.com/bkerler/gr-ham -b maint-3.10
 git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
