@@ -223,7 +223,6 @@ git clone https://github.com/ghostop14/gr-lfast
 git clone https://github.com/bastibl/gr-rstt -b maint-3.9
 git clone https://github.com/bastibl/gr-sched -b maint-3.9
 git clone https://github.com/duggabe/gr-morse-code-gen
-git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 git clone https://github.com/jdemel/gr-gfdm
 
 git clone https://github.com/bkerler/gr-nfc -b maint-3.10
@@ -263,7 +262,11 @@ git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
 
 echo "Building modules .."
-for i in `ls -d */`;do echo $i && cd $i ; build.sh ; cd ..; done
+for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
+
+git clone https://git.code.sf.net/u/bkerler/gr-acars.git
+cd gr-acars/3.10ng/ && build.sh && cd ../..
+
 cd ..
 
 echo "Installing apps"
