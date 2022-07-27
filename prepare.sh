@@ -22,7 +22,7 @@ sudo swapon /swapfile
 fi
 
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
-pip3 install numpy scipy pygccxml bitstring scapy 
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas
 
 if architecture="amd64"
 then
