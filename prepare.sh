@@ -181,7 +181,6 @@ git clone https://github.com/argilo/gr-flarm -b master
 git clone https://github.com/bkerler/gr-ham -b maint-3.10
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/dl1ksv/gr-ax25
-git clone https://github.com/drmpeg/gr-cessb
 git clone https://github.com/argilo/gr-dsd
 git clone https://github.com/argilo/gr-elster
 git clone https://github.com/bastibl/gr-foo -b maint-3.9
@@ -217,6 +216,7 @@ git clone https://github.com/bastibl/gr-rstt -b maint-3.9
 git clone https://github.com/bastibl/gr-sched -b maint-3.9
 git clone https://github.com/jdemel/gr-gfdm
 
+git clone https://github.com/bkerler/gr-cessb
 git clone https://github.com/bkerler/gr-xcorrelate -b maint-3.10
 git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
