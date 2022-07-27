@@ -202,61 +202,62 @@ git clone https://gitlab.com/larryth/tetra-kit
 git clone https://github.com/jdemel/XFDMSync
 git clone https://github.com/ghostop14/gr-filerepeater
 git clone https://github.com/bastibl/gr-rds -b maint-3.10
-git clone https://github.com/bkerler/gr-m17 -b maint-3.10
 git clone https://github.com/ghostop14/gr-mesa
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
-git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
-git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
-git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
-git clone https://github.com/bkerler/darc -b maint-3.10
-git clone https://github.com/bkerler/gr-adsb -b maint-3.10
-git clone https://github.com/bkerler/gr-ais -b maint-3.10
-git clone https://github.com/bkerler/gr-gfdm -b maint-3.10
-git clone https://github.com/bkerler/gr-mixalot -b maint-3.10
-git clone https://github.com/bkerler/gr-rftap -b maint-3.10
+git clone https://github.com/martynvdijke/gr-lora_sdr
 git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/ghostop14/gr-gpredict-doppler
-git clone https://github.com/bkerler/gr-rtty -b maint-3.10
 git clone https://github.com/ghostop14/gr-atsc2
 git clone https://github.com/ghostop14/gr-grnet
-git clone https://github.com/bkerler/gr-nfc -b maint-3.10
 git clone https://github.com/daniestevez/gr-satellites
-git clone https://github.com/bkerler/gr-gsm -b maint-3.10
-git clone https://github.com/bkerler/gr-bruninga -b maint-3.10
-git clone https://github.com/bkerler/gr-nordic -b maint-3.10
 git clone https://github.com/ghostop14/gr-sql
 git clone https://github.com/andrepuschmann/gr-cc11xx -b maint-3.10
 git clone https://github.com/ghostop14/gr-guiextra
 git clone https://github.com/bkerler/gr-ntsc-rc -b maint-3.10
 git clone https://github.com/ghostop14/gr-symbolrate
-git clone https://github.com/bkerler/gr-ccsds -b maint-3.10
+git clone https://github.com/drmpeg/gr-paint
+git clone https://github.com/muccc/gr-iridium --check
+git clone https://github.com/dl1ksv/gr-display
+git clone https://github.com/drmpeg/gr-dvbs2
+git clone https://github.com/ghostop14/gr-lfast
+git clone https://github.com/bastibl/gr-rstt -b maint-3.9
+git clone https://github.com/bastibl/gr-sched -b maint-3.9
+git clone https://github.com/duggabe/gr-morse-code-gen
+git clone https://git.code.sf.net/u/bkerler/gr-acars.git
+git clone https://github.com/jdemel/gr-gfdm
+
+git clone https://github.com/bkerler/gr-nfc -b maint-3.10
+git clone https://github.com/bkerler/gr-m17 -b maint-3.10
+git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
+git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
+git clone https://github.com/bkerler/darc -b maint-3.10
+git clone https://github.com/bkerler/gr-adsb -b maint-3.10
+git clone https://github.com/bkerler/gr-ais -b maint-3.10
+git clone https://github.com/bkerler/gr-mixalot -b maint-3.10
+git clone https://github.com/bkerler/gr-rftap -b maint-3.10
+git clone https://github.com/bkerler/gr-rtty -b maint-3.10
+git clone https://github.com/bkerler/gr-gsm -b maint-3.10
+git clone https://github.com/bkerler/gr-bruninga -b maint-3.10
+git clone https://github.com/bkerler/gr-nordic -b maint-3.10
+git clone https://github.com/bkerler/gr-ccsds -b testing
 git clone https://github.com/bkerler/gr-pager -b maint-3.10
 git clone https://github.com/bkerler/gr-tempest -b maint-3.10
-git clone https://github.com/drmpeg/gr-paint
 git clone https://github.com/bkerler/gr-timing_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-dab -b maint-3.10
 git clone https://github.com/bkerler/gr-inspector -b maint-3.10
 git clone https://github.com/bkerler/gr-tpms -b maint-3.10
 git clone https://github.com/bkerler/gr-pdu_utils -b maint-3.10
 git clone https://github.com/bkerler/op25 -b maint-3.10
-git clone https://github.com/muccc/gr-iridium --check
-git clone https://github.com/dl1ksv/gr-display
 git clone https://github.com/bkerler/gr-isdbt -b maint-3.10
 git clone https://github.com/bkerler/gr-pcap -b maint-3.10
 git clone https://github.com/bkerler/gr-pipe -b maint-3.10
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 git clone https://github.com/bkerler/gr-dsmx-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
-git clone https://github.com/drmpeg/gr-dvbs2
-git clone https://github.com/ghostop14/gr-lfast
 git clone https://github.com/bkerler/gr-lacrosse -b maint-3.10
 git clone https://github.com/bkerler/gr-ppm-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-FDC -b maint-3.10
 git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
-git clone https://github.com/bastibl/gr-rstt -b maint-3.9
-git clone https://github.com/bastibl/gr-sched -b maint-3.9
-git clone https://github.com/duggabe/gr-morse-code-gen
-git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
