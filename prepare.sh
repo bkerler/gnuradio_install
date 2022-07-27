@@ -177,7 +177,7 @@ cd ~/gnuradio/src/modules
 git clone https://github.com/osmocom/gr-osmosdr --recursive
 git clone https://github.com/bkerler/gr-compress -b maint-3.10
 git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
-git clone https://github.com/argilo/gr-flarm -b master
+git clone https://github.com/bkerler/gr-flarm
 git clone https://github.com/bkerler/gr-ham -b maint-3.10
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/dl1ksv/gr-ax25
