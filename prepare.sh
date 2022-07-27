@@ -12,7 +12,7 @@ case $(uname -m) in
     arm)    dpkg --print-architecture | grep -q "arm64" && architecture="arm64" || architecture="arm" ;;
 esac
 
-sudo apt install git cmake g++ libboost-all-dev libgmp-dev swig python3-numpy python3-mako python3-sphinx python3-lxml doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev libzmq3-dev python3-yaml python3-click python3-click-plugins python3-zmq python3-scipy python3-pip python3-gi-cairo python-is-python3 python3-jsonschema texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev python3-pybind11 libclfft-dev libusb-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen libgl1-mesa-glx -y
+sudo apt install git cmake g++ libboost-all-dev libgmp-dev swig python3-numpy python3-mako python3-sphinx python3-lxml doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev libzmq3-dev python3-yaml python3-click python3-click-plugins python3-zmq python3-scipy python3-pip python3-gi-cairo python-is-python3 python3-jsonschema texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev python3-pybind11 libclfft-dev libusb-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen libgl1-mesa-glx rapidjson-dev -y
 if architecture="arm"
 then
 sudo fallocate -l 2G /swapfile
@@ -174,16 +174,14 @@ mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=
 echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
+git clone https://github.com/osmocom/gr-osmosdr --recursive
 git clone https://github.com/bkerler/gr-compress -b maint-3.10
 git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
 git clone https://github.com/argilo/gr-flarm -b master
 git clone https://github.com/bkerler/gr-ham -b maint-3.10
-git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/dl1ksv/gr-ax25
 git clone https://github.com/drmpeg/gr-cessb
-git clone https://github.com/duggabe/gr-control
-git clone https://github.com/ghostop14/gr-correctiq
 git clone https://github.com/argilo/gr-dsd
 git clone https://github.com/argilo/gr-elster
 git clone https://github.com/bastibl/gr-foo -b maint-3.9
@@ -193,18 +191,15 @@ git clone https://github.com/bastibl/gr-ieee802-11 -b maint-3.9
 git clone https://git.osmocom.org/gr-iqbal
 git clone https://github.com/muaddib1984/gr-JAERO -b dev
 git clone https://github.com/rpp0/gr-lora
-git clone https://github.com/duggabe/gr-morse-code-gen
 git clone https://github.com/argilo/gr-nrsc5
 git clone https://github.com/bastibl/gr-keyfob -b maint-3.10
 git clone https://github.com/BitBangingBytes/gr-smart_meters
 git clone https://github.com/ant-uni-bremen/gr-symbolmapping
-git clone https://gitlab.com/larryth/tetra-kit
 git clone https://github.com/jdemel/XFDMSync
 git clone https://github.com/ghostop14/gr-filerepeater
 git clone https://github.com/bastibl/gr-rds -b maint-3.10
 git clone https://github.com/ghostop14/gr-mesa
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
-git clone https://github.com/martynvdijke/gr-lora_sdr
 git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/ghostop14/gr-gpredict-doppler
 git clone https://github.com/ghostop14/gr-atsc2
@@ -216,17 +211,18 @@ git clone https://github.com/ghostop14/gr-guiextra
 git clone https://github.com/bkerler/gr-ntsc-rc -b maint-3.10
 git clone https://github.com/ghostop14/gr-symbolrate
 git clone https://github.com/drmpeg/gr-paint
-git clone https://github.com/muccc/gr-iridium --check
-git clone https://github.com/dl1ksv/gr-display
 git clone https://github.com/drmpeg/gr-dvbs2
 git clone https://github.com/ghostop14/gr-lfast
 git clone https://github.com/bastibl/gr-rstt -b maint-3.9
 git clone https://github.com/bastibl/gr-sched -b maint-3.9
-git clone https://github.com/duggabe/gr-morse-code-gen
 git clone https://github.com/jdemel/gr-gfdm
 
+git clone https://github.com/bkerler/gr-xcorrelate -b maint-3.10
+git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
+git clone https://github.com/bkerler/gr-iridium -b maint-3.10
+git clone https://github.com/bkerler/gr-correctiq
+git clone https://github.com/bkerler/gr-display
 git clone https://github.com/bkerler/gr-nfc -b maint-3.10
-git clone https://github.com/bkerler/gr-m17 -b maint-3.10
 git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
 git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
 git clone https://github.com/bkerler/darc -b maint-3.10
@@ -246,13 +242,10 @@ git clone https://github.com/bkerler/gr-dab -b maint-3.10
 git clone https://github.com/bkerler/gr-inspector -b maint-3.10
 git clone https://github.com/bkerler/gr-tpms -b maint-3.10
 git clone https://github.com/bkerler/gr-pdu_utils -b maint-3.10
-git clone https://github.com/bkerler/op25 -b maint-3.10
 git clone https://github.com/bkerler/gr-isdbt -b maint-3.10
 git clone https://github.com/bkerler/gr-pcap -b maint-3.10
 git clone https://github.com/bkerler/gr-pipe -b maint-3.10
-git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 git clone https://github.com/bkerler/gr-dsmx-rc -b maint-3.10
-git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
 git clone https://github.com/bkerler/gr-lacrosse -b maint-3.10
 git clone https://github.com/bkerler/gr-ppm-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-FDC -b maint-3.10
@@ -260,14 +253,35 @@ git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
 git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
+cd gr-osmosdr && build.sh && cd ..
 
 echo "Building modules .."
 for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
 
 git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 cd gr-acars/3.10ng/ && build.sh && cd ../..
-
+git clone https://github.com/bkerler/op25 -b maint-3.10
+cd op25/op25
+cd gr-op25_repeater && build.sh && cd ..
+cd gr-op25 && build.sh && cd ..
+cd ../../
+git clone https://github.com/bkerler/scapy-radio -b maint-3.10
+cd scapy-radio/gnuradio
+cd gr-bt4le && build.sh && cd ..
+cd gr-scapy_radio && build.sh && cd ..
+cd gr-zigbee && build.sh && cd ..
+cd gr-Zwave && build.sh && cd ..
+cd ../..
+git clone https://gitlab.com/larryth/tetra-kit
+cd tetra-kit && ./build.sh && cd ..
 cd ..
+git clone https://github.com/bkerler/gr-m17 -b maint-3.10
+cd gr-m17 && build.sh && cd ..
+
+echo "Installing scripts"
+git clone https://github.com/duggabe/gr-control
+git clone https://github.com/duggabe/gr-morse-code-gen
+git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
 
 echo "Installing apps"
 sudo apt install fldigi -y
