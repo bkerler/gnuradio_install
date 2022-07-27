@@ -85,13 +85,15 @@ echo "Building lib source"
 mkdir -p ~/gnuradio/src/other
 cd ~/gnuradio/src/other
 git clone https://github.com/jgaeddert/liquid-dsp --recursive
-git clone https://github.com/thestk/rtaudio --recursive
+wget http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.2.0.tar.gz
+tar xzvf rtaudio-5.2.0.tar.gz
+rm rtaudio-5.2.0.tar.gz
 git clone https://github.com/gnuradio/volk --recursive
 git clone https://github.com/greatscottgadgets/libbtbb --recursive
 git clone https://github.com/osmocom/libosmo-dsp --recursive
 git clone https://github.com/osmocom/osmo-ir77 --recursive
 cd liquid-dsp && ./bootstrap.sh && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
-cd rtaudio && build.sh && cd ..
+cd rtaudio-5.2.0 && build.sh && cd ..
 cd volk && build.sh && cd ..
 volk_profile
 cd libbtbb && build.sh && cd ..
@@ -266,10 +268,8 @@ cd ..
 echo "Installing apps"
 sudo apt install fldigi -y
 pip3 install urh crcmod
-
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
-git clone https://github.com/AlexandreRouma/SDRPlusPlus --recursive
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
 
 #git clone https://github.com/BatchDrake/SigDigger --recursive
