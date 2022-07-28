@@ -205,7 +205,7 @@ git clone https://github.com/ghostop14/gr-atsc2
 git clone https://github.com/ghostop14/gr-grnet
 git clone https://github.com/daniestevez/gr-satellites
 git clone https://github.com/ghostop14/gr-sql
-git clone https://github.com/andrepuschmann/gr-cc11xx -b maint-3.10
+git clone https://github.com/andrepuschmann/gr-cc11xx
 git clone https://github.com/ghostop14/gr-guiextra
 git clone https://github.com/bkerler/gr-ntsc-rc -b maint-3.10
 git clone https://github.com/ghostop14/gr-symbolrate
