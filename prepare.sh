@@ -288,9 +288,26 @@ sudo apt install fldigi -y
 pip3 install urh crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
+git clone https://github.com/AlexandreRouma/SDRPlusPlus
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
 
-#git clone https://github.com/BatchDrake/SigDigger --recursive
+git clone https://github.com/BatchDrake/sigutils --recursive
+cd sigutils && build.sh && cd ..
+git clone https://github.com/BatchDrake/suscan --recursive
+cd suscan && build.sh && cd ..
+git clone https://github.com/BatchDrake/SuWidgets
+cd SuWidgets
+qmake SuWidgets.pro PREFIX=/home/$USER/gnuradio
+make -j
+sudo make install
+cd ..
+git clone https://github.com/BatchDrake/SigDigger --recursive
+cd SigDigger
+qmake SigDigger.pro PREFIX=/home/$USER/gnuradio
+make -j
+sudo make install
+cd ..
+
 
 if architecture="arm"
 then
