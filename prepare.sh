@@ -216,11 +216,11 @@ git clone https://github.com/bastibl/gr-rstt -b maint-3.9
 git clone https://github.com/bastibl/gr-sched -b maint-3.9
 git clone https://github.com/jdemel/gr-gfdm
 
-git clone https://github.com/bkerler/gr-cessb
-git clone https://github.com/bkerler/gr-xcorrelate -b maint-3.10
+git clone https://github.com/drmpeg/gr-cessb
+git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
-git clone https://github.com/bkerler/gr-correctiq
+git clone https://github.com/ghostop14/gr-correctiq
 git clone https://github.com/bkerler/gr-display
 git clone https://github.com/bkerler/gr-nfc -b maint-3.10
 git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
