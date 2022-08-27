@@ -321,3 +321,4 @@ then
 sudo swapoff /swapfile
 sudo rm -rf /swapfile
 fi
+sudo sysctl -w net.core.wmem_max=24862979
