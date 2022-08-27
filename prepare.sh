@@ -218,6 +218,12 @@ git clone https://github.com/jdemel/gr-gfdm
 
 git clone https://github.com/drmpeg/gr-cessb
 git clone https://github.com/ghostop14/gr-xcorrelate
+git clone https://github.com/bkerler/gr-clapper_plus -b maint-3.10
+git clone https://github.com/bkerler/gr-garage_door -b maint-3.10
+git clone https://github.com/bkerler/gr-j2497 -b maint-3.10
+git clone https://github.com/bkerler/gr-tpms_poore -b maint-3.10
+git clone https://github.com/bkerler/gr-X10 -b maint-3.10
+git clone https://github.com/bkerler/gr-zwave_poore -b maint-3.10
 git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
 git clone https://github.com/ghostop14/gr-correctiq
@@ -251,6 +257,7 @@ git clone https://github.com/bkerler/gr-ppm-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-FDC -b maint-3.10
 git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
 git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
+git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
 
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
 cd gr-osmosdr && build.sh && cd ..
