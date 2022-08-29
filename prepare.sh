@@ -36,7 +36,7 @@ fi
 
 sudo pip3 install pybombs
 pybombs auto-config
-pybombs recipes add-default
+pybombs recipes add-defaults
 pybombs prefix init ~/gnuradio
 
 mkdir ~/gnuradio/bin
