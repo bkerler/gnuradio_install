@@ -215,9 +215,11 @@ git clone https://github.com/ghostop14/gr-lfast
 git clone https://github.com/bastibl/gr-rstt -b maint-3.9
 git clone https://github.com/bastibl/gr-sched -b maint-3.9
 git clone https://github.com/jdemel/gr-gfdm
-
+git clone https://github.com/krakenrf/gr-krakensdr
 git clone https://github.com/drmpeg/gr-cessb
 git clone https://github.com/ghostop14/gr-xcorrelate
+git clone https://github.com/ghostop14/gr-correctiq
+
 git clone https://github.com/bkerler/gr-clapper_plus -b maint-3.10
 git clone https://github.com/bkerler/gr-garage_door -b maint-3.10
 git clone https://github.com/bkerler/gr-j2497 -b maint-3.10
@@ -226,7 +228,6 @@ git clone https://github.com/bkerler/gr-X10 -b maint-3.10
 git clone https://github.com/bkerler/gr-zwave_poore -b maint-3.10
 git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
-git clone https://github.com/ghostop14/gr-correctiq
 git clone https://github.com/bkerler/gr-display
 git clone https://github.com/bkerler/gr-nfc -b maint-3.10
 git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
