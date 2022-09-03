@@ -186,6 +186,9 @@ git clone https://github.com/bkerler/gr-gsm -b maint-3.10
 git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 git clone https://github.com/bkerler/gr-flarm
 
+# Repo updated, but PR not yet seen / accepted
+git clone https://github.com/bkerler/gr-tempest -b maint-3.10
+
 # Maintained by the authors / PR accepted or actively maintained
 git clone https://github.com/osmocom/gr-osmosdr --recursive
 git clone https://github.com/osmocom/gr-fosphor
@@ -243,10 +246,6 @@ git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/muaddib1984/gr-JAERO -b dev
 git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
-
-# Need to be updated
-
-git clone https://github.com/bkerler/gr-tempest -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
