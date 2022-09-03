@@ -199,7 +199,7 @@ git clone https://github.com/argilo/gr-elster
 git clone https://github.com/argilo/gr-nrsc5
 git clone https://github.com/argilo/gr-ham
 
-git clone https://github.com/bastibl/gr-foo -b maint-3.9
+git clone https://github.com/bastibl/gr-foo -b maint-3.10
 git clone https://github.com/bastibl/gr-ieee802-11 -b maint-3.9
 git clone https://github.com/bastibl/gr-keyfob -b maint-3.10
 git clone https://github.com/bastibl/gr-rds -b maint-3.10
