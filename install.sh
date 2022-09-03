@@ -174,77 +174,98 @@ mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=
 echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
-git clone https://github.com/osmocom/gr-osmosdr --recursive
-git clone https://github.com/bkerler/gr-compress -b maint-3.10
-git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
+
+# Maintainers might have 3.10 forks but do not accept PR
+git clone https://github.com/bkerler/gr-iridium -b maint-3.10
+git clone https://github.com/bkerler/darc -b maint-3.10
+
+# Sync in progress
+git clone https://github.com/bkerler/gr-gsm -b maint-3.10
+git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 git clone https://github.com/bkerler/gr-flarm
-git clone https://github.com/bkerler/gr-ham -b maint-3.10
+
+# Maintained by the authors / PR accepted or actively maintained
+git clone https://github.com/osmocom/gr-osmosdr --recursive
+git clone https://github.com/osmocom/gr-fosphor
+git clone https://git.osmocom.org/gr-iqbal
+
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/dl1ksv/gr-ax25
+
 git clone https://github.com/argilo/gr-dsd
 git clone https://github.com/argilo/gr-elster
-git clone https://github.com/bastibl/gr-foo -b maint-3.9
-git clone https://github.com/osmocom/gr-fosphor
-git clone https://github.com/777arc/gr-hrpt
-git clone https://github.com/bastibl/gr-ieee802-11 -b maint-3.9
-git clone https://git.osmocom.org/gr-iqbal
-git clone https://github.com/muaddib1984/gr-JAERO -b dev
-git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/argilo/gr-nrsc5
+git clone https://github.com/argilo/gr-ham
+
+git clone https://github.com/bastibl/gr-foo -b maint-3.9
+git clone https://github.com/bastibl/gr-ieee802-11 -b maint-3.9
 git clone https://github.com/bastibl/gr-keyfob -b maint-3.10
-git clone https://github.com/BitBangingBytes/gr-smart_meters
-git clone https://github.com/ant-uni-bremen/gr-symbolmapping
-git clone https://github.com/jdemel/XFDMSync
-git clone https://github.com/ghostop14/gr-filerepeater
 git clone https://github.com/bastibl/gr-rds -b maint-3.10
+git clone https://github.com/bastibl/gr-rstt -b maint-3.9
+git clone https://github.com/bastibl/gr-sched -b maint-3.9
+
+git clone https://github.com/ainfosec/gr-j2497
+git clone https://github.com/cpoore1/gr-clapper_plus
+git clone https://github.com/cpoore1/gr-garage_door
+git clone https://github.com/cpoore1/gr-tpms_poore
+git clone https://github.com/cpoore1/gr-X10
+git clone https://github.com/cpoore1/gr-zwave_poore
+
+git clone https://github.com/drmpeg/gr-paint
+git clone https://github.com/drmpeg/gr-dvbs2
+git clone https://github.com/drmpeg/gr-cessb
+
+git clone https://github.com/ghostop14/gr-filerepeater
 git clone https://github.com/ghostop14/gr-mesa
-git clone https://github.com/bkerler/gr-reveng -b maint-3.10
-git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/ghostop14/gr-gpredict-doppler
 git clone https://github.com/ghostop14/gr-atsc2
 git clone https://github.com/ghostop14/gr-grnet
-git clone https://github.com/daniestevez/gr-satellites
 git clone https://github.com/ghostop14/gr-sql
-git clone https://github.com/andrepuschmann/gr-cc11xx
 git clone https://github.com/ghostop14/gr-guiextra
-git clone https://github.com/bkerler/gr-ntsc-rc -b maint-3.10
 git clone https://github.com/ghostop14/gr-symbolrate
-git clone https://github.com/drmpeg/gr-paint
-git clone https://github.com/drmpeg/gr-dvbs2
-git clone https://github.com/ghostop14/gr-lfast
-git clone https://github.com/bastibl/gr-rstt -b maint-3.9
-git clone https://github.com/bastibl/gr-sched -b maint-3.9
-git clone https://github.com/jdemel/gr-gfdm
-git clone https://github.com/krakenrf/gr-krakensdr
-git clone https://github.com/drmpeg/gr-cessb
 git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/ghostop14/gr-correctiq
+git clone https://github.com/ghostop14/gr-lfast
 
+git clone https://github.com/jdemel/XFDMSync
+git clone https://github.com/jdemel/gr-gfdm
+
+git clone https://github.com/777arc/gr-hrpt
+git clone https://github.com/andrepuschmann/gr-cc11xx
+git clone https://github.com/ant-uni-bremen/gr-symbolmapping
+git clone https://github.com/BitBangingBytes/gr-smart_meters
+git clone https://github.com/daniestevez/gr-satellites
+git clone https://github.com/dl1ksv/gr-display
+git clone https://github.com/krakenrf/gr-krakensdr
+git clone https://github.com/MarcinWachowiak/gr-aoa
+git clone https://github.com/muaddib1984/gr-JAERO -b dev
+git clone https://github.com/rpp0/gr-lora
+git clone https://github.com/tapparelj/gr-lora_sdr
+
+# Need to be updated
+git clone https://github.com/bkerler/gr-nordic -b maint-3.10
+git clone https://github.com/bkerler/gr-tempest -b maint-3.10
+
+# Special version
+git clone https://github.com/bkerler/gr-reveng -b maint-3.10
+
+# PR not yet accepted / no resposne
+git clone https://github.com/bkerler/gr-adsb -b maint-3.10
+git clone https://github.com/bkerler/gr-compress -b maint-3.10
+git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
+git clone https://github.com/bkerler/gr-ntsc-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-bluetooth -b maint-3.10
-git clone https://github.com/bkerler/gr-clapper_plus -b maint-3.10
-git clone https://github.com/bkerler/gr-garage_door -b maint-3.10
-git clone https://github.com/bkerler/gr-j2497 -b maint-3.10
-git clone https://github.com/bkerler/gr-tpms_poore -b maint-3.10
-git clone https://github.com/bkerler/gr-X10 -b maint-3.10
-git clone https://github.com/bkerler/gr-zwave_poore -b maint-3.10
 git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
-git clone https://github.com/bkerler/gr-iridium -b maint-3.10
-git clone https://github.com/bkerler/gr-display
 git clone https://github.com/bkerler/gr-nfc -b maint-3.10
 git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
 git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
-git clone https://github.com/bkerler/darc -b maint-3.10
-git clone https://github.com/bkerler/gr-adsb -b maint-3.10
 git clone https://github.com/bkerler/gr-ais -b maint-3.10
 git clone https://github.com/bkerler/gr-mixalot -b maint-3.10
 git clone https://github.com/bkerler/gr-rftap -b maint-3.10
 git clone https://github.com/bkerler/gr-rtty -b maint-3.10
-git clone https://github.com/bkerler/gr-gsm -b maint-3.10
 git clone https://github.com/bkerler/gr-bruninga -b maint-3.10
-git clone https://github.com/bkerler/gr-nordic -b maint-3.10
 git clone https://github.com/bkerler/gr-ccsds -b testing
 git clone https://github.com/bkerler/gr-pager -b maint-3.10
-git clone https://github.com/bkerler/gr-tempest -b maint-3.10
 git clone https://github.com/bkerler/gr-timing_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-dab -b maint-3.10
 git clone https://github.com/bkerler/gr-inspector -b maint-3.10
@@ -258,7 +279,6 @@ git clone https://github.com/bkerler/gr-lacrosse -b maint-3.10
 git clone https://github.com/bkerler/gr-ppm-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-FDC -b maint-3.10
 git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
-git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
 
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
