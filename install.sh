@@ -220,6 +220,7 @@ git clone https://github.com/drmpeg/gr-cessb
 git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/ghostop14/gr-correctiq
 
+git clone https://github.com/bkerler/gr-bluetooth -b maint-3.10
 git clone https://github.com/bkerler/gr-clapper_plus -b maint-3.10
 git clone https://github.com/bkerler/gr-garage_door -b maint-3.10
 git clone https://github.com/bkerler/gr-j2497 -b maint-3.10
