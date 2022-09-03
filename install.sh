@@ -245,13 +245,14 @@ git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
 
 # Need to be updated
-git clone https://github.com/bkerler/gr-nordic -b maint-3.10
+
 git clone https://github.com/bkerler/gr-tempest -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
 
 # PR not yet accepted / no resposne
+git clone https://github.com/bkerler/gr-nordic -b maint-3.10
 git clone https://github.com/bkerler/gr-adsb -b maint-3.10
 git clone https://github.com/bkerler/gr-compress -b maint-3.10
 git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
