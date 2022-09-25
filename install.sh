@@ -251,6 +251,7 @@ git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
 
 # PR not yet accepted / no resposne
+git clone https://github.com/bkerler/ham2mon -b maint-3.10
 git clone https://github.com/bkerler/gr-nordic -b maint-3.10
 git clone https://github.com/bkerler/gr-adsb -b maint-3.10
 git clone https://github.com/bkerler/gr-compress -b maint-3.10
@@ -308,6 +309,8 @@ cd tetra-kit && ./build.sh && cd ..
 cd ..
 git clone https://github.com/bkerler/gr-m17 -b maint-3.10
 cd gr-m17 && build.sh && cd ..
+git clone https://github.com/proto17/dji_droneid -b gr-droneid-3.10
+cd dji_droneid/gnuradio && build.sh && cd ../..
 
 echo "Installing scripts"
 git clone https://github.com/duggabe/gr-control
