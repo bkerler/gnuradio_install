@@ -324,6 +324,14 @@ pip3 install urh crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
 
+git clone https://github.com/EliasOenal/multimon-ng
+cd multimon-ng
+mkdir build
+cd build
+qmake ../multimon-ng.pro PREFIX=/home/$USER/gnuradio
+make
+make install
+
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
 git clone https://github.com/BatchDrake/sigutils --recursive
