@@ -247,6 +247,7 @@ git clone https://github.com/muaddib1984/gr-JAERO -b dev
 git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
+git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
@@ -272,7 +273,6 @@ git clone https://github.com/bkerler/gr-ccsds -b testing
 git clone https://github.com/bkerler/gr-pager -b maint-3.10
 git clone https://github.com/bkerler/gr-timing_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-dab -b maint-3.10
-git clone https://github.com/bkerler/gr-inspector -b maint-3.10
 git clone https://github.com/bkerler/gr-tpms -b maint-3.10
 git clone https://github.com/bkerler/gr-pdu_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-isdbt -b maint-3.10
