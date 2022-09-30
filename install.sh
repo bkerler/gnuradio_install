@@ -319,13 +319,13 @@ git clone https://github.com/duggabe/gr-morse-code-gen
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
 
 echo "Installing apps"
-sudo apt install fldigi -y
+sudo apt install fldigi qsstv -y
 pip3 install urh crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
+
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
-
 git clone https://github.com/BatchDrake/sigutils --recursive
 cd sigutils && build.sh && cd ..
 git clone https://github.com/BatchDrake/suscan --recursive
