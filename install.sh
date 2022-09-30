@@ -248,6 +248,7 @@ git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
+git clone https://github.com/mobilinkd/m17-cxx-demod
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
