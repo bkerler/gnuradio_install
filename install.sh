@@ -253,6 +253,9 @@ git clone https://github.com/mobilinkd/m17-cxx-demod
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
 
+# Not fully ported to gr-3.10
+git clone https://github.com/bkerler/gr-air-modes -b maint-3.10
+
 # PR not yet accepted / no resposne
 git clone https://github.com/bkerler/ham2mon -b maint-3.10
 git clone https://github.com/bkerler/gr-nordic -b maint-3.10
