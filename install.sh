@@ -26,6 +26,7 @@ pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest
 
 if architecture="amd64"
 then
+    cd /tmp
 	wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
 	sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
 	echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
@@ -84,6 +85,10 @@ mkdir -p ~/gnuradio/logs
 echo "Building lib source"
 mkdir -p ~/gnuradio/src/other
 cd ~/gnuradio/src/other
+git clone https://github.com/ttsou/turbofec
+cd turbofec && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
+git clone https://github.com/d-bahr/CRCpp
+cd CRCpp && build.sh && cd ..
 git clone https://github.com/jgaeddert/liquid-dsp --recursive
 wget http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.2.0.tar.gz
 tar xzvf rtaudio-5.2.0.tar.gz
@@ -117,21 +122,35 @@ git clone https://github.com/Nuand/bladeRF --recursive
 git clone https://github.com/greatscottgadgets/hackrf --recursive
 
 cd rtl-sdr-blog
+sudo cp rtl-sdr.rules /etc/udev/rules.d/
 mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio -DINSTALL_UDEV_RULES=ON && make -j`nproc` && sudo make install && cd .. && rm -rf builddir && cd ..
 
 cd SoapySDR && build.sh && cd ..
 
 cd LimeSuite && git checkout stable && mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio && make -j$(nproc) && make install && cd .. && rm -rf builddir 
 cd udev-rules && sudo ./install.sh && cd ..
-cd ~/gnuradio/src/hw
 
-cd airspyhf && build.sh && cd ..
-cd airspyone_host && build.sh && cd ..
+cd airspyhf
+sudo cp tools/52-airspyhf.rules /etc/udev/rules.d/
+build.sh && cd ..
+
+cd airspyone_host
+sudo cp airspy-tools/52-airspy.rules /etc/udev/rules.d/
+build.sh && cd ..
+
 cd libiio && mkdir build2 && cd build2 && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && make install && cd .. && rm -rf build2 && cd ..
 cd libad9361-iio && build.sh && cd ..
-cd bladeRF/host && build.sh && cd ../..
+
+cd bladeRF/host 
+sudo cp misc/udev/88-nuand-* /etc/udev/rules.d/
+build.sh && cd ../..
+
 cd libosmocore && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
-cd hackrf/host && build.sh && cd ../..
+
+cd hackrf/host
+sudo cp libhackrf/53-hackrf.rules /etc/udev/
+build.sh && cd ../..
+
 if architecture="arm64"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-3.07.1.run
@@ -184,7 +203,6 @@ git clone https://github.com/bkerler/darc -b maint-3.10
 # Sync in progress
 git clone https://github.com/bkerler/gr-gsm -b maint-3.10
 git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
-git clone https://github.com/bkerler/gr-flarm
 
 # Repo updated, but PR not yet seen / accepted
 git clone https://github.com/bkerler/gr-tempest -b maint-3.10
@@ -194,9 +212,9 @@ git clone https://github.com/osmocom/gr-osmosdr --recursive
 git clone https://github.com/osmocom/gr-fosphor
 git clone https://git.osmocom.org/gr-iqbal
 
-git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/dl1ksv/gr-ax25
 
+git clone https://github.com/argilo/gr-flarm
 git clone https://github.com/argilo/gr-dsd
 git clone https://github.com/argilo/gr-elster
 git clone https://github.com/argilo/gr-nrsc5
@@ -209,12 +227,12 @@ git clone https://github.com/bastibl/gr-rds -b maint-3.10
 git clone https://github.com/bastibl/gr-rstt -b maint-3.9
 git clone https://github.com/bastibl/gr-sched -b maint-3.9
 
-git clone https://github.com/ainfosec/gr-j2497
-git clone https://github.com/cpoore1/gr-clapper_plus
-git clone https://github.com/cpoore1/gr-garage_door
-git clone https://github.com/cpoore1/gr-tpms_poore
-git clone https://github.com/cpoore1/gr-X10
-git clone https://github.com/cpoore1/gr-zwave_poore
+git clone https://github.com/ainfosec/gr-j2497 -b maint-3.10
+git clone https://github.com/cpoore1/gr-clapper_plus -b maint-3.10
+git clone https://github.com/cpoore1/gr-garage_door -b maint-3.10
+git clone https://github.com/cpoore1/gr-tpms_poore -b maint-3.10
+git clone https://github.com/cpoore1/gr-X10 -b maint-3.10
+git clone https://github.com/cpoore1/gr-zwave_poore -b maint-3.10
 
 git clone https://github.com/drmpeg/gr-paint
 git clone https://github.com/drmpeg/gr-dvbs2
@@ -246,7 +264,6 @@ git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/muaddib1984/gr-JAERO -b dev
 git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
-git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/davidtoddmiller/gr-HighDataRate_Modem
@@ -292,18 +309,19 @@ git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
 git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
 
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
-cd gr-osmosdr && build.sh && cd ..
 
 echo "Building modules .."
 for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
 
 git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 cd gr-acars/3.10ng/ && build.sh && cd ../..
+
 git clone https://github.com/bkerler/op25 -b maint-3.10
 cd op25/op25
 cd gr-op25_repeater && build.sh && cd ..
 cd gr-op25 && build.sh && cd ..
 cd ../../
+
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 cd scapy-radio/gnuradio
 cd gr-bt4le && build.sh && cd ..
@@ -311,18 +329,23 @@ cd gr-scapy_radio && build.sh && cd ..
 cd gr-zigbee && build.sh && cd ..
 cd gr-Zwave && build.sh && cd ..
 cd ../..
+
 git clone https://gitlab.com/larryth/tetra-kit
 cd tetra-kit && ./build.sh && cd ..
-cd ..
+
 git clone https://github.com/bkerler/gr-m17 -b maint-3.10
 cd gr-m17 && build.sh && cd ..
-git clone https://github.com/proto17/dji_droneid -b gr-droneid-3.10
-cd dji_droneid/gnuradio && build.sh && cd ../..
+
+git clone https://github.com/proto17/dji_droneid -b gr-droneid-update-3.10
+cd dji_droneid/gnuradio/gr-droneid && build.sh && cd ../../..
 
 echo "Downloading scripts / flowgraphs"
+mkdir ~/gnuradio/flowgraphs
+cd ~/gnuradio/flowgraphs
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
+git clone https://github.com/bkerler/gnuradio_flowgraphs
 git clone https://github.com/handiko/gr-APRS
 git clone https://github.com/handiko/gr-HDLC-AFSK
 git clone https://github.com/argilo/sdr-examples
@@ -340,12 +363,15 @@ cd build
 qmake ../multimon-ng.pro PREFIX=/home/$USER/gnuradio
 make
 make install
-cd ..
+cd ../..
 
-snap install sdrangel
+sudo snap install sdrangel
 
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
-cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ..
+cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ../..
+
+mkdir SigDigger
+cd SigDigger
 git clone https://github.com/BatchDrake/sigutils --recursive
 cd sigutils && build.sh && cd ..
 git clone https://github.com/BatchDrake/suscan --recursive
@@ -353,16 +379,18 @@ cd suscan && build.sh && cd ..
 git clone https://github.com/BatchDrake/SuWidgets
 cd SuWidgets
 qmake SuWidgets.pro PREFIX=/home/$USER/gnuradio
-make -j
+make -j 4
 sudo make install
 cd ..
 git clone https://github.com/BatchDrake/SigDigger --recursive
 cd SigDigger
 qmake SigDigger.pro PREFIX=/home/$USER/gnuradio
-make -j
+make -j 4
 sudo make install
 cd ..
 
+cd ~/Downloads
+wget --mirror --convert-links --html-extension --wait=2 -o log https://pysdr.org
 
 if architecture="arm"
 then
