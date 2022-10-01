@@ -249,6 +249,8 @@ git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/bistromath/gr-air-modes -b gr3.9
 git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
+git clone https://github.com/davidtoddmiller/gr-HighDataRate_Modem
+git clone https://github.com/redwiretechnologies/gr-enocean
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
@@ -317,10 +319,13 @@ cd gr-m17 && build.sh && cd ..
 git clone https://github.com/proto17/dji_droneid -b gr-droneid-3.10
 cd dji_droneid/gnuradio && build.sh && cd ../..
 
-echo "Installing scripts"
+echo "Downloading scripts / flowgraphs"
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
+git clone https://github.com/handiko/gr-APRS
+git clone https://github.com/handiko/gr-HDLC-AFSK
+git clone https://github.com/argilo/sdr-examples
 
 echo "Installing apps"
 sudo apt install fldigi qsstv -y
