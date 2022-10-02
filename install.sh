@@ -324,9 +324,9 @@ cd gr-op25 && build.sh && cd ..
 cd ../../
 
 git clone https://github.com/bkerler/darc -b maint-3.10
-cd src/gr-darc
+cd darc/src/gr-darc
 build.sh
-cd ../../
+cd ../../../
 
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 cd scapy-radio/gnuradio
