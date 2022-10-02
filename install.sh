@@ -63,7 +63,7 @@ make -j`nproc`
 sudo make install
 sudo mkdir -p /home/$USER/gnuradio/share/uhd/images
 sudo chown $USER:$USER -R /home/$USER/gnuradio
-uhd_images_downloader
+#uhd_images_downloader
 cd ..
 rm -rf builddir
 cd ..
