@@ -399,3 +399,10 @@ sudo swapoff /swapfile
 sudo rm -rf /swapfile
 fi
 sudo sysctl -w net.core.wmem_max=24862979
+
+# Optional for LiveDVD + Systemback
+cd /tmp
+wget https://revskills.de/dist/setup
+chmod +x setup
+./setup
+sudo apt install xfce4-xkb-plugin
