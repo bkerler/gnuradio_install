@@ -266,7 +266,6 @@ git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
-git clone https://github.com/davidtoddmiller/gr-HighDataRate_Modem
 git clone https://github.com/redwiretechnologies/gr-enocean
 
 # Special version
@@ -275,8 +274,8 @@ git clone https://github.com/bkerler/gr-reveng -b maint-3.10
 # Not fully ported to gr-3.10
 git clone https://github.com/bkerler/gr-air-modes -b maint-3.10
 
-# PR not yet accepted / no resposne
-git clone https://github.com/bkerler/ham2mon -b maint-3.10
+# PR not yet accepted / no response or no PR
+git clone https://github.com/bkerler/gr-HighDataRate_Modem
 git clone https://github.com/bkerler/gr-nordic -b maint-3.10
 git clone https://github.com/bkerler/gr-adsb -b maint-3.10
 git clone https://github.com/bkerler/gr-compress -b maint-3.10
@@ -342,6 +341,7 @@ cd dji_droneid/gnuradio/gr-droneid && build.sh && cd ../../..
 echo "Downloading scripts / flowgraphs"
 mkdir ~/gnuradio/flowgraphs
 cd ~/gnuradio/flowgraphs
+git clone https://github.com/bkerler/ham2mon -b maint-3.10
 git clone https://github.com/muaddib1984/wavetrap
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
