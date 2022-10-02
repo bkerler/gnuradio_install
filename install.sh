@@ -268,6 +268,7 @@ git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/davidtoddmiller/gr-HighDataRate_Modem
 git clone https://github.com/redwiretechnologies/gr-enocean
+git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
