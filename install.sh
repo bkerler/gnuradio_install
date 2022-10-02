@@ -199,7 +199,6 @@ cd ~/gnuradio/src/modules
 
 # Maintainers might have 3.10 forks but do not accept PR
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
-git clone https://github.com/bkerler/darc -b maint-3.10
 
 # Sync in progress
 git clone https://github.com/bkerler/gr-gsm -b maint-3.10
@@ -259,7 +258,7 @@ git clone https://github.com/andrepuschmann/gr-cc11xx
 git clone https://github.com/ant-uni-bremen/gr-symbolmapping
 git clone https://github.com/BitBangingBytes/gr-smart_meters
 git clone https://github.com/daniestevez/gr-satellites
-git clone https://github.com/dl1ksv/gr-display
+git clone https://github.com/bkerler/gr-display
 git clone https://github.com/krakenrf/gr-krakensdr
 git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/muaddib1984/gr-JAERO -b dev
@@ -270,7 +269,7 @@ git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/redwiretechnologies/gr-enocean
 
 # Special version
-git clone https://github.com/bkerler/gr-reveng -b maint-3.10
+git clone https://github.com/bkerler/gr-reveng
 
 # Not fully ported to gr-3.10
 git clone https://github.com/bkerler/gr-air-modes -b maint-3.10
@@ -320,6 +319,11 @@ git clone https://github.com/bkerler/op25 -b maint-3.10
 cd op25/op25
 cd gr-op25_repeater && build.sh && cd ..
 cd gr-op25 && build.sh && cd ..
+cd ../../
+
+git clone https://github.com/bkerler/darc -b maint-3.10
+cd src/gr-darc
+build.sh
 cd ../../
 
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
