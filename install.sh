@@ -268,7 +268,6 @@ git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/davidtoddmiller/gr-HighDataRate_Modem
 git clone https://github.com/redwiretechnologies/gr-enocean
-git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng -b maint-3.10
@@ -350,6 +349,7 @@ git clone https://github.com/bkerler/gnuradio_flowgraphs
 git clone https://github.com/handiko/gr-APRS
 git clone https://github.com/handiko/gr-HDLC-AFSK
 git clone https://github.com/argilo/sdr-examples
+git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
 
 echo "Installing apps"
 sudo apt install fldigi qsstv -y
