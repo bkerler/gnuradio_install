@@ -4,6 +4,7 @@
 # pacmd update-sink-proplist MySink device.description=MySink
 # pacmd load-module module-loopback sink=MySink
 # pavucontrol to configure audio for apps
+# modprobe snd-aloop
 
 architecture=""
 case $(uname -m) in
@@ -13,13 +14,13 @@ case $(uname -m) in
 esac
 
 sudo apt install git cmake g++ libboost-all-dev castxml libgmp-dev libjs-mathjax python3-numpy python3-mako python3-sphinx python3-lxml doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev libzmq3-dev python3-yaml python3-click python3-click-plugins python3-zmq python3-scipy python3-pip python3-gi-cairo python-is-python3 python3-jsonschema texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev python3-pybind11 libclfft-dev libusb-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen libgl1-mesa-glx rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev -y
-if architecture="arm"
-then
-sudo fallocate -l 2G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-fi
+#if architecture="arm"
+#then
+#sudo fallocate -l 2G /swapfile
+#sudo chmod 600 /swapfile
+#sudo mkswap /swapfile
+#sudo swapon /swapfile
+#fi
 
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
 pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest
@@ -397,11 +398,11 @@ cd ..
 cd ~/Downloads
 wget --mirror --convert-links --html-extension --wait=2 -o log https://pysdr.org
 
-if architecture="arm"
-then
-sudo swapoff /swapfile
-sudo rm -rf /swapfile
-fi
+#if architecture="arm"
+#then
+#sudo swapoff /swapfile
+#sudo rm -rf /swapfile
+#fi
 sudo sysctl -w net.core.wmem_max=24862979
 
 # Optional for LiveDVD + Systemback
