@@ -342,6 +342,7 @@ cd dji_droneid/gnuradio/gr-droneid && build.sh && cd ../../..
 echo "Downloading scripts / flowgraphs"
 mkdir ~/gnuradio/flowgraphs
 cd ~/gnuradio/flowgraphs
+git clone https://github.com/muaddib1984/wavetrap
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
@@ -352,7 +353,7 @@ git clone https://github.com/argilo/sdr-examples
 git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
 
 echo "Installing apps"
-sudo apt install fldigi qsstv -y
+sudo apt install fldigi qsstv inspectrum -y
 pip3 install urh crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
@@ -370,6 +371,9 @@ sudo snap install sdrangel
 
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ../..
+
+git clone https://github.com/gqrx-sdr/gqrx
+cd gqrx && build.sh && cd ..
 
 mkdir SigDigger
 cd SigDigger
