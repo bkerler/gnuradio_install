@@ -201,7 +201,6 @@ cd ~/gnuradio/src/modules
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
 
 # Sync in progress
-git clone https://github.com/bkerler/gr-gsm -b maint-3.10
 git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
 
 # Repo updated, but PR not yet seen / accepted
@@ -311,6 +310,9 @@ git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
 
 echo "Building modules .."
 for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
+
+git clone https://github.com/bkerler/gr-gsm -b maint-3.10
+cd gr-gsm && build.sh && cd ..
 
 git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 cd gr-acars/3.10ng/ && build.sh && cd ../..
