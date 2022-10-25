@@ -213,6 +213,7 @@ git clone https://github.com/osmocom/gr-fosphor
 git clone https://git.osmocom.org/gr-iqbal
 
 git clone https://github.com/dl1ksv/gr-ax25
+git clone https://github.com/ast/gr-airspy
 
 git clone https://github.com/argilo/gr-flarm
 git clone https://github.com/argilo/gr-dsd
