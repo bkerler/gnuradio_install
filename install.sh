@@ -173,6 +173,7 @@ cd ~/gnuradio/src/hw_modules
 git clone https://github.com/pothosware/SoapyUHD --recursive
 git clone https://github.com/pothosware/SoapyRTLSDR --recursive
 git clone https://github.com/pothosware/SoapyAirspy --recursive
+git clone https://github.com/ast/SoapyAirspyHF
 git clone https://github.com/pothosware/SoapyRemote --recursive
 git clone https://github.com/pothosware/SoapyBladeRF --recursive
 git clone https://github.com/pothosware/SoapyMultiSDR --recursive
