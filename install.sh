@@ -319,7 +319,7 @@ cd gr-gsm && build.sh && cd ..
 git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 cd gr-acars/3.10ng/ && build.sh && cd ../..
 
-git clone https://github.com/bkerler/op25 -b maint-3.10
+git clone https://github.com/llamaonaskateboard/op25
 cd op25/op25
 cd gr-op25_repeater && build.sh && cd ..
 cd gr-op25 && build.sh && cd ..
