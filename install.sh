@@ -203,7 +203,7 @@ cd ~/gnuradio/src/modules
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
 
 # Sync in progress
-git clone https://github.com/bkerler/gr-ieee802-15-4 -b maint-3.10
+git clone https://github.com/bkerler/gr-compress -b maint-3.10
 
 # Repo updated, but PR not yet seen / accepted
 git clone https://github.com/bkerler/gr-tempest -b maint-3.10
@@ -224,6 +224,7 @@ git clone https://github.com/argilo/gr-ham
 
 git clone https://github.com/bastibl/gr-foo -b maint-3.10
 git clone https://github.com/bastibl/gr-ieee802-11 -b maint-3.9
+git clone https://github.com/bastibl/gr-ieee802-15-4 -b maint-3.10
 git clone https://github.com/bastibl/gr-keyfob -b maint-3.10
 git clone https://github.com/bastibl/gr-rds -b maint-3.10
 git clone https://github.com/bastibl/gr-rstt -b maint-3.9
@@ -269,6 +270,11 @@ git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/redwiretechnologies/gr-enocean
+git clone https://github.com/pavelyazev/gr-dect2
+
+git clone https://github.com/sandialabs/gr-fhss_utils -b maint-3.10
+git clone https://github.com/sandialabs/gr-timing_utils -b maint-3.10
+git clone https://github.com/sandialabs/gr-pdu_utils -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng
@@ -280,14 +286,10 @@ git clone https://github.com/bkerler/gr-air-modes -b maint-3.10
 git clone https://github.com/bkerler/gr-HighDataRate_Modem
 git clone https://github.com/bkerler/gr-nordic -b maint-3.10
 git clone https://github.com/bkerler/gr-adsb -b maint-3.10
-git clone https://github.com/bkerler/gr-compress -b maint-3.10
-git clone https://github.com/bkerler/gr-dect2 -b maint-3.10
 git clone https://github.com/bkerler/gr-ntsc-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-bluetooth -b maint-3.10
-git clone https://github.com/bkerler/gr-lora_sdr -b maint-3.10
 git clone https://github.com/bkerler/gr-nfc -b maint-3.10
 git clone https://github.com/bkerler/gr-radioteletype -b maint-3.10
-git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-ais -b maint-3.10
 git clone https://github.com/bkerler/gr-mixalot -b maint-3.10
 git clone https://github.com/bkerler/gr-rftap -b maint-3.10
@@ -295,10 +297,8 @@ git clone https://github.com/bkerler/gr-rtty -b maint-3.10
 git clone https://github.com/bkerler/gr-bruninga -b maint-3.10
 git clone https://github.com/bkerler/gr-ccsds -b testing
 git clone https://github.com/bkerler/gr-pager -b maint-3.10
-git clone https://github.com/bkerler/gr-timing_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-dab -b maint-3.10
 git clone https://github.com/bkerler/gr-tpms -b maint-3.10
-git clone https://github.com/bkerler/gr-pdu_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-isdbt -b maint-3.10
 git clone https://github.com/bkerler/gr-pcap -b maint-3.10
 git clone https://github.com/bkerler/gr-pipe -b maint-3.10
@@ -352,11 +352,11 @@ echo "Downloading scripts / flowgraphs"
 mkdir ~/gnuradio/flowgraphs
 cd ~/gnuradio/flowgraphs
 git clone https://github.com/bkerler/ham2mon -b maint-3.10
+git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
+git clone https://github.com/bkerler/gnuradio_flowgraphs
 git clone https://github.com/muaddib1984/wavetrap
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
-git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
-git clone https://github.com/bkerler/gnuradio_flowgraphs
 git clone https://github.com/handiko/gr-APRS
 git clone https://github.com/handiko/gr-HDLC-AFSK
 git clone https://github.com/argilo/sdr-examples
