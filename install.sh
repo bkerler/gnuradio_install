@@ -272,9 +272,10 @@ git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/redwiretechnologies/gr-enocean
 git clone https://github.com/pavelyazev/gr-dect2
 
+git clone https://github.com/bkerler/gr-pdu_utils -b maint-3.10
 git clone https://github.com/sandialabs/gr-fhss_utils -b maint-3.10
 git clone https://github.com/sandialabs/gr-timing_utils -b maint-3.10
-git clone https://github.com/sandialabs/gr-pdu_utils -b maint-3.10
+
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng
