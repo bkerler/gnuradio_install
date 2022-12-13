@@ -280,6 +280,7 @@ git clone https://github.com/bkerler/gr-timing_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
 
 git clone https://github.com/bkerler/ais-simulator -b maint-3.10
+git clone https://github.com/bkerler/ais -b maint-3.10
 
 # Special version
 git clone https://github.com/bkerler/gr-reveng
