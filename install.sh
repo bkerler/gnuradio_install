@@ -179,6 +179,7 @@ git clone https://github.com/pothosware/SoapyBladeRF --recursive
 git clone https://github.com/pothosware/SoapyMultiSDR --recursive
 git clone https://github.com/pothosware/SoapySDRPlay3 --recursive
 git clone https://github.com/pothosware/SoapyPlutoSDR --recursive
+git clone https://github.com/pothosware/SoapyHackRF --recursive
 cd SoapyUHD && build.sh && cd ..
 cd SoapyRTLSDR && build.sh && cd ..
 cd SoapyAirspy && build.sh && cd ..
@@ -188,6 +189,7 @@ cd SoapySDRPlay3 && build.sh && cd ..
 cd SoapyMultiSDR && build.sh && cd ..
 cd SoapyBladeRF && build.sh && cd ..
 cd SoapyPlutoSDR && build.sh && cd ..
+cd SoapyHackRF && build.sh && cd ..
 
 echo "Building gnuradio"
 cd ~/gnuradio/src
