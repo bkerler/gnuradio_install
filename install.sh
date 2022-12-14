@@ -374,6 +374,7 @@ pip3 install urh crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
 
+git clone https://github.com/Oros42/IMSI-catcher
 git clone https://github.com/EliasOenal/multimon-ng
 cd multimon-ng
 mkdir build
