@@ -427,6 +427,17 @@ wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.0/sdr-trunk-lin
 7z x sdr-trunk-linux-x86_64-v0.5.0.zip
 rm sdr-trunk-linux-x86_64-v0.5.0.zip
 
+git clone https://github.com/mikeryan/ice9-bluetooth-sniffer
+cd ice9-bluetooth-sniffer
+mkdir builddir
+cd builddir
+cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio -DHACKRF_INCLUDE_DIR=~/gnuradio/include -DLIQUID_INCLUDE_DIR=~/gnuradio/include
+make
+make install
+cd ..
+rm -rf builddir
+cd ..
+
 cd ~/Downloads
 wget --mirror --convert-links --html-extension --wait=2 -o log https://pysdr.org
 
