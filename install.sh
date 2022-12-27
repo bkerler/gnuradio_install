@@ -437,6 +437,11 @@ cd RTLSDR-Airband/src
 build.sh
 cd ../..
 
+git clone https://github.com/merbanan/rtl_433
+cd rtl_433
+build.sh
+cd ..
+
 git clone https://github.com/mikeryan/ice9-bluetooth-sniffer
 cd ice9-bluetooth-sniffer
 mkdir builddir
