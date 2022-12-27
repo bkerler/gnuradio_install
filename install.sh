@@ -423,6 +423,10 @@ make -j 4
 sudo make install
 cd ..
 
+wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.0/sdr-trunk-linux-x86_64-v0.5.0.zip
+7z x sdr-trunk-linux-x86_64-v0.5.0.zip
+rm sdr-trunk-linux-x86_64-v0.5.0.zip
+
 cd ~/Downloads
 wget --mirror --convert-links --html-extension --wait=2 -o log https://pysdr.org
 
