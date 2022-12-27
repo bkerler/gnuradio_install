@@ -427,6 +427,11 @@ wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.0/sdr-trunk-lin
 7z x sdr-trunk-linux-x86_64-v0.5.0.zip
 rm sdr-trunk-linux-x86_64-v0.5.0.zip
 
+git clone https://github.com/rxseger/rx_tools
+cd rx_tools
+build.sh
+cd ..
+
 git clone https://github.com/mikeryan/ice9-bluetooth-sniffer
 cd ice9-bluetooth-sniffer
 mkdir builddir
