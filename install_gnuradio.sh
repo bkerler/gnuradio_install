@@ -273,6 +273,7 @@ git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
 git clone https://github.com/mobilinkd/m17-cxx-demod
 git clone https://github.com/redwiretechnologies/gr-enocean
 git clone https://github.com/pavelyazev/gr-dect2
+git clone https://github.com/jacobagilbert/gr-sigmf_utils
 
 git clone https://github.com/bkerler/gr-pdu_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-sandia_utils -b maint-3.10
