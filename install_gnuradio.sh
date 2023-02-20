@@ -280,9 +280,6 @@ git clone https://github.com/bkerler/gr-sandia_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-timing_utils -b maint-3.10
 git clone https://github.com/bkerler/gr-fhss_utils -b maint-3.10
 
-git clone https://github.com/bkerler/ais-simulator -b maint-3.10
-git clone https://github.com/bkerler/ais -b maint-3.10
-
 # Special version
 git clone https://github.com/bkerler/gr-reveng
 
@@ -353,6 +350,9 @@ cd gr-m17 && build.sh && cd ..
 
 git clone https://github.com/proto17/dji_droneid -b gr-droneid-update-3.10
 cd dji_droneid/gnuradio/gr-droneid && build.sh && cd ../../..
+
+git clone https://github.com/bkerler/ais-simulator -b maint-3.10
+git clone https://github.com/bkerler/ais -b maint-3.10
 
 #if architecture="arm"
 #then
