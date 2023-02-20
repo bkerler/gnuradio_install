@@ -29,9 +29,8 @@ pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest
 if architecture="amd64"
 then
     cd /tmp
-	wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-	sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-	echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+	wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+	echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
 	sudo apt update
 	sudo apt install opencl-headers intel-oneapi-runtime-opencl -y
 	sudo apt install intel-oneapi-runtime-compilers intel-opencl-icd clinfo -y
