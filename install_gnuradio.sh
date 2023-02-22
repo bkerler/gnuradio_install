@@ -317,7 +317,7 @@ git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
 echo "Building modules .."
 for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
 
-git clone https://github.com/bkerler/gr-gsm -b maint-3.10
+git clone https://github.com/bkerler/gr-gsm -b maint-3.10_with_multiarfcn
 cd gr-gsm && build.sh && cd ..
 
 git clone https://git.code.sf.net/u/bkerler/gr-acars.git
