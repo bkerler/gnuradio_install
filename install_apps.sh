@@ -29,14 +29,19 @@ git clone https://github.com/handiko/gr-APRS
 git clone https://github.com/handiko/gr-HDLC-AFSK
 git clone https://github.com/argilo/sdr-examples
 git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
-git clone https://github.com/muaddib1984/stillsuit
-git clone https://github.com/muaddib1984/arrakis
 
 echo "Installing apps"
 sudo apt install fldigi qsstv inspectrum -y
 pip3 install urh crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
+
+git clone https://github.com/muaddib1984/stillsuit
+git clone https://github.com/muaddib1984/arrakis
+git clone https://github.com/ggerganov/whisper.cpp
+cd whisper.cpp
+./build.sh && bash ./models/download-ggml-model.sh base
+cd ..
 
 git clone https://gitlab.com/larryth/tetra-kit
 cd tetra-kit && ./build.sh && cd ..
