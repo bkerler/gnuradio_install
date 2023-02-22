@@ -41,6 +41,7 @@ git clone https://github.com/muaddib1984/arrakis
 git clone https://github.com/ggerganov/whisper.cpp
 cd whisper.cpp
 ./build.sh && bash ./models/download-ggml-model.sh base
+make -j
 cd ..
 
 git clone https://gitlab.com/larryth/tetra-kit
