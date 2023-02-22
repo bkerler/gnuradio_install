@@ -144,7 +144,13 @@ cd libad9361-iio && build.sh && cd ..
 
 cd bladeRF/host 
 sudo cp misc/udev/88-nuand-* /etc/udev/rules.d/
-build.sh && cd ../..
+mkdir builddir && cd builddir
+cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio -DENABLE_NONFREE=TRUE
+make -j `nproc`
+make install
+cd ..
+rm -rf build
+cd ../..
 
 cd libosmocore && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
 
