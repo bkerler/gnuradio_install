@@ -317,7 +317,7 @@ git clone https://github.com/bkerler/gr-ppm-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-FDC -b maint-3.10
 git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
 git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
-
+git clone https://gitlab.com/librespacefoundation/gr-leo
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
 
 echo "Building modules .."
