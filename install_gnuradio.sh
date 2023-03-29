@@ -263,6 +263,8 @@ git clone https://github.com/ghostop14/gr-lfast
 git clone https://github.com/jdemel/XFDMSync
 git clone https://github.com/jdemel/gr-gfdm
 
+git clone https://github.com/muaddib1984/gr-JAERO -b dev
+
 git clone https://github.com/777arc/gr-hrpt
 git clone https://github.com/andrepuschmann/gr-cc11xx
 git clone https://github.com/ant-uni-bremen/gr-symbolmapping
@@ -271,7 +273,6 @@ git clone https://github.com/daniestevez/gr-satellites
 git clone https://github.com/bkerler/gr-display
 git clone https://github.com/krakenrf/gr-krakensdr
 git clone https://github.com/MarcinWachowiak/gr-aoa
-git clone https://github.com/muaddib1984/gr-JAERO -b dev
 git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
 git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
@@ -339,6 +340,12 @@ git clone https://github.com/bkerler/darc -b maint-3.10
 cd darc/src/gr-darc
 build.sh
 cd ../../../
+
+git clone https://github.com/muaddib1984/stillsuit
+git clone https://github.com/muaddib1984/gr-webspectrum
+git clone https://github.com/muaddib1984/gr-pyais_json
+git clone https://github.com/muaddib1984/wavetrap
+git clone https://github.com/muaddib1984/arrakis
 
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 cd scapy-radio/gnuradio
