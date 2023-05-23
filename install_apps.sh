@@ -40,6 +40,7 @@ cd ~/gnuradio/utils
 
 git clone https://github.com/muaddib1984/stillsuit
 git clone https://github.com/muaddib1984/arrakis
+git clone https://github.com/szpajder/dumpvdl2
 git clone https://github.com/ggerganov/whisper.cpp
 cd whisper.cpp
 ./build.sh && bash ./models/download-ggml-model.sh base
