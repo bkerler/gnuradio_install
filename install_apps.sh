@@ -74,6 +74,8 @@ gcc gpssim.c -lm -O3 -o gps-sdr-sim
 cp gpssim.c ~/gnuradio/bin
 cd ..
 
+git clone https://github.com/josevcm/nfc-laboratory
+
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
 cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ../..
 
