@@ -346,6 +346,7 @@ git clone https://github.com/muaddib1984/gr-webspectrum
 git clone https://github.com/muaddib1984/gr-pyais_json
 git clone https://github.com/muaddib1984/wavetrap
 git clone https://github.com/muaddib1984/arrakis
+git clone https://kuenzi.dev/assets/files/sniff_NFC.grc
 
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 cd scapy-radio/gnuradio
