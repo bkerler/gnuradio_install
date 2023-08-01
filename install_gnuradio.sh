@@ -24,7 +24,7 @@ sudo apt install libairspyhf-dev libconfig++-dev libmp3lame-dev libshout-dev -y
 #fi
 
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
-pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest
 
 if architecture="amd64"
 then
