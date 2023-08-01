@@ -24,7 +24,7 @@ sudo apt install libairspyhf-dev libconfig++-dev libmp3lame-dev libshout-dev -y
 #fi
 
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
-pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako
 
 if architecture="amd64"
 then
@@ -36,7 +36,7 @@ then
 	sudo apt install intel-oneapi-runtime-compilers intel-opencl-icd clinfo -y
 fi
 
-sudo pip3 install pybombs
+pip3 install pybombs
 pybombs auto-config
 pybombs recipes add-defaults
 pybombs prefix init ~/gnuradio
