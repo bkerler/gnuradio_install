@@ -231,7 +231,8 @@ git clone https://github.com/argilo/gr-nrsc5
 git clone https://github.com/argilo/gr-ham
 
 git clone https://github.com/bastibl/gr-foo -b maint-3.10
-git clone https://github.com/bastibl/gr-ieee802-11 -b maint-3.9
+#spdlog issue pr
+git clone https://github.com/bkerler/gr-ieee802-11 -b maint-3.11
 git clone https://github.com/bastibl/gr-ieee802-15-4 -b maint-3.10
 git clone https://github.com/bastibl/gr-keyfob -b maint-3.10
 git clone https://github.com/bastibl/gr-rds -b maint-3.10
@@ -246,7 +247,7 @@ git clone https://github.com/cpoore1/gr-X10 -b maint-3.10
 git clone https://github.com/cpoore1/gr-zwave_poore -b maint-3.10
 
 git clone https://github.com/drmpeg/gr-paint
-git clone https://github.com/drmpeg/gr-dvbs2
+git clone https://github.com/bkerler/gr-dvbs2 -b maint-3.11
 git clone https://github.com/drmpeg/gr-cessb
 
 git clone https://github.com/ghostop14/gr-filerepeater
