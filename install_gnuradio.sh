@@ -247,6 +247,7 @@ git clone https://github.com/cpoore1/gr-X10 -b maint-3.10
 git clone https://github.com/cpoore1/gr-zwave_poore -b maint-3.10
 
 git clone https://github.com/drmpeg/gr-paint
+# Fix spdlog issue
 git clone https://github.com/bkerler/gr-dvbs2 -b maint-3.11
 git clone https://github.com/drmpeg/gr-cessb
 
@@ -320,7 +321,8 @@ git clone https://github.com/bkerler/gr-ppm-rc -b maint-3.10
 git clone https://github.com/bkerler/gr-FDC -b maint-3.10
 git clone https://github.com/bkerler/gr-pylambda -b maint-3.10
 git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
-git clone https://gitlab.com/librespacefoundation/gr-leo
+# Issue with libsgp4 (librespacefoundation)
+git clone https://gitlab.com/bkerler/gr-leo
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
 
 echo "Building modules .."
