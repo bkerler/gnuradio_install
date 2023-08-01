@@ -61,9 +61,9 @@ else
 	cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio
 fi
 make -j`nproc`
-sudo make install
-sudo mkdir -p /home/$USER/gnuradio/share/uhd/images
-sudo chown $USER:$USER -R /home/$USER/gnuradio
+make install
+mkdir -p /home/$USER/gnuradio/share/uhd/images
+chown $USER:$USER -R /home/$USER/gnuradio
 #uhd_images_downloader
 cd ..
 rm -rf builddir
