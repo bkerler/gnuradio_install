@@ -251,6 +251,8 @@ git clone https://github.com/drmpeg/gr-paint
 git clone https://github.com/bkerler/gr-dvbs2 -b maint-3.11
 git clone https://github.com/drmpeg/gr-cessb
 
+git clone https://github.com/krono-i2/gr-spoof1090
+
 git clone https://github.com/ghostop14/gr-filerepeater
 git clone https://github.com/ghostop14/gr-mesa
 git clone https://github.com/ghostop14/gr-gpredict-doppler
