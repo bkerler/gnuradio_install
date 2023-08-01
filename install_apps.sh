@@ -34,7 +34,8 @@ git clone https://github.com/henningM1r/gr_DCF77_Receiver
 
 echo "Installing apps"
 sudo apt install fldigi qsstv inspectrum -y
-pip3 install urh crcmod
+# Needed for urh
+pip3 install crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
 
@@ -43,7 +44,7 @@ git clone https://github.com/muaddib1984/arrakis
 git clone https://github.com/szpajder/dumpvdl2
 git clone https://github.com/ggerganov/whisper.cpp
 cd whisper.cpp
-./build.sh && bash ./models/download-ggml-model.sh base
+bash ./models/download-ggml-model.sh base
 make -j
 cd ..
 
@@ -92,13 +93,14 @@ git clone https://github.com/BatchDrake/SuWidgets
 cd SuWidgets
 qmake SuWidgets.pro PREFIX=/home/$USER/gnuradio
 make -j 4
-sudo make install
+make install
 cd ..
 git clone https://github.com/BatchDrake/SigDigger --recursive
 cd SigDigger
+echo "INCLUDEPATH += /home/bjk/gnuradio/include/SuWidgets" >> SigDigger.pro
 qmake SigDigger.pro PREFIX=/home/$USER/gnuradio
 make -j 4
-sudo make install
+make install
 cd ..
 
 wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.0/sdr-trunk-linux-x86_64-v0.5.0.zip
