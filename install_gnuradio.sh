@@ -265,6 +265,8 @@ git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/ghostop14/gr-correctiq
 git clone https://github.com/ghostop14/gr-lfast
 
+git clone https://github.com/henningM1r/gr_DCF77_Receiver
+
 git clone https://github.com/jdemel/XFDMSync
 git clone https://github.com/jdemel/gr-gfdm
 
