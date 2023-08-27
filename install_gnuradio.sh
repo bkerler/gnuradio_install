@@ -266,7 +266,8 @@ echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
 
-git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
+#git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
+git clone https://github.com/bkerler/gr-aaronia_rtsa --recursive
 
 # Maintainers might have 3.10 forks but do not accept PR
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
