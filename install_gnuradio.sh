@@ -24,7 +24,7 @@ sudo apt install libairspyhf-dev libconfig++-dev libmp3lame-dev libshout-dev -y
 #fi
 
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
-pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako
 
 if architecture="amd64"
 then
@@ -172,6 +172,10 @@ then
 	chmod +x SDRplay_RSP_API-Linux-3.07.1.run
 fi
 
+# spectran V6
+git clone https://github.com/hb9fxq/libspectranstream
+cd libspectranstream && build.sh && cd ..
+
 echo "Building soapy modules"
 mkdir ~/gnuradio/src/hw_modules
 cd ~/gnuradio/src/hw_modules
@@ -185,6 +189,8 @@ git clone https://github.com/pothosware/SoapyMultiSDR --recursive
 git clone https://github.com/pothosware/SoapySDRPlay3 --recursive
 git clone https://github.com/pothosware/SoapyPlutoSDR --recursive
 git clone https://github.com/pothosware/SoapyHackRF --recursive
+git clone https://github.com/hb9fxq/SoapySpectranV6 --recursive
+
 cd SoapyUHD && build.sh && cd ..
 cd SoapyRTLSDR && build.sh && cd ..
 cd SoapyAirspy && build.sh && cd ..
@@ -195,6 +201,7 @@ cd SoapyMultiSDR && build.sh && cd ..
 cd SoapyBladeRF && build.sh && cd ..
 cd SoapyPlutoSDR && build.sh && cd ..
 cd SoapyHackRF && build.sh && cd ..
+cd SoapySpectranV6 && build.sh && cd ..
 
 echo "Building gnuradio"
 cd ~/gnuradio/src
@@ -205,6 +212,8 @@ mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=
 echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
+
+git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
 
 # Maintainers might have 3.10 forks but do not accept PR
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
