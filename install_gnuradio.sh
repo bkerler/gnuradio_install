@@ -187,6 +187,11 @@ cp misc/udev/88-nuand-* /etc/udev/rules.d/
 build.sh
 cd ../..
 
+git clone https://github.com/ryanvolz/gr-hpsdr
+cd gr-hpsdr
+build.sh
+cd ..
+
 cd libosmocore && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
 
 cd hackrf/host
