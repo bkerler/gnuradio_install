@@ -155,6 +155,7 @@ git clone https://github.com/airspy/airspyone_host --recursive
 git clone https://github.com/osmocom/libosmocore --recursive
 git clone https://github.com/Nuand/bladeRF --recursive
 git clone https://github.com/greatscottgadgets/hackrf --recursive
+git clone https://github.com/cozycactus/librx888 --recursive
 
 cd rtl-sdr-blog
 sudo cp rtl-sdr.rules /etc/udev/rules.d/
@@ -243,6 +244,7 @@ git clone https://github.com/pothosware/SoapySDRPlay3 --recursive
 git clone https://github.com/pothosware/SoapyPlutoSDR --recursive
 git clone https://github.com/pothosware/SoapyHackRF --recursive
 git clone https://github.com/hb9fxq/SoapySpectranV6 --recursive
+git clone https://github.com/cozycactus/SoapyRX888 --recursive
 
 cd SoapyUHD && build.sh && cd ..
 cd SoapyRTLSDR && build.sh && cd ..
@@ -255,6 +257,7 @@ cd SoapyBladeRF && build.sh && cd ..
 cd SoapyPlutoSDR && build.sh && cd ..
 cd SoapyHackRF && build.sh && cd ..
 cd SoapySpectranV6 && build.sh && cd ..
+cd SoapyRX888 && build.sh && cd ..
 
 echo "Building gnuradio"
 cd ~/gnuradio/src
