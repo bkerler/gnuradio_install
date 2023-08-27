@@ -389,6 +389,8 @@ git clone https://github.com/bkerler/gr-limesdr -b maint-3.10
 git clone https://gitlab.com/bkerler/gr-leo
 #for i in `ls -d */`;do echo $i && cd $i ; git pull && git submodule init && git submodule update ; cd ..;done
 
+git clone https://github.com/muaddib1984/gr-pyais_json
+
 echo "Building modules .."
 for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
 
@@ -398,24 +400,16 @@ cd gr-gsm && build.sh && cd ..
 git clone https://git.code.sf.net/u/bkerler/gr-acars.git
 cd gr-acars/3.10ng/ && build.sh && cd ../..
 
-git clone https://github.com/llamaonaskateboard/op25
-cd op25/op25
-cd gr-op25_repeater && build.sh && cd ..
-cd gr-op25 && build.sh && cd ..
-cd ../../
+#git clone https://github.com/llamaonaskateboard/op25
+#cd op25/op25
+#cd gr-op25_repeater && build.sh && cd ..
+#cd gr-op25 && build.sh && cd ..
+#cd ../../
 
 git clone https://github.com/bkerler/darc -b maint-3.10
 cd darc/src/gr-darc
 build.sh
 cd ../../../
-
-git clone https://github.com/muaddib1984/stillsuit
-git clone https://github.com/muaddib1984/gr-webspectrum
-git clone https://github.com/muaddib1984/gr-pyais_json
-git clone https://github.com/muaddib1984/wavetrap
-git clone https://github.com/muaddib1984/arrakis
-wget https://kuenzi.dev/assets/files/sniff_NFC.grc
-git clone https://github.com/bkerler/GnuRadio-Wireshark-Example
 
 git clone https://github.com/bkerler/scapy-radio -b maint-3.10
 cd scapy-radio/gnuradio
@@ -435,7 +429,9 @@ git clone https://github.com/proto17/dji_droneid -b gr-droneid-update-3.10
 cd dji_droneid/gnuradio/gr-droneid && build.sh && cd ../../..
 
 git clone https://github.com/bkerler/ais-simulator -b maint-3.10
+cd ais-simulator/gr-ais_simulator && build.sh && cd ../..
 git clone https://github.com/bkerler/ais -b maint-3.10
+cd ais/gr-aistx && build.sh && cd ../..
 
 #if architecture="arm"
 #then
