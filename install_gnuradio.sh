@@ -426,6 +426,9 @@ cd ../..
 git clone https://gitlab.com/larryth/tetra-kit
 cd tetra-kit && ./build.sh && cd ..
 
+git clone https://github.com/zeetwii/mockingbird
+cd mockingbird/gr-adsb && build.sh && cd ../..
+
 git clone https://github.com/bkerler/gr-m17 -b maint-3.10
 cd gr-m17 && build.sh && cd ..
 
