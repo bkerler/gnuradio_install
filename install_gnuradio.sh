@@ -13,19 +13,6 @@ case $(uname -m) in
     arm)    dpkg --print-architecture | grep -q "arm64" && architecture="arm64" || architecture="arm" ;;
 esac
 
-sudo apt install git cmake g++-12 libboost-all-dev castxml libgmp-dev libjs-mathjax python3-numpy python3-mako python3-sphinx python3-lxml doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev libzmq3-dev python3-yaml python3-click python3-click-plugins python3-zmq python3-scipy python3-pip python3-gi-cairo python-is-python3 python3-jsonschema texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev python3-pybind11 libclfft-dev libusb-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen libgl1-mesa-glx rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev libxml2-dev libcurl4-openssl-dev libcdk5-dev -y
-sudo apt install libairspyhf-dev libconfig++-dev libmp3lame-dev libshout-dev -y
-#if architecture="arm"
-#then
-#sudo fallocate -l 2G /swapfile
-#sudo chmod 600 /swapfile
-#sudo mkswap /swapfile
-#sudo swapon /swapfile
-#fi
-
-pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
-pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako
-
 if architecture="amd64"
 then
     cd /tmp
@@ -36,7 +23,48 @@ then
 	sudo apt install intel-oneapi-runtime-compilers intel-opencl-icd clinfo -y
 fi
 
+echo "Installing os requirements..."
+sudo apt install git cmake g++-12 libboost-all-dev libcairo2-dev castxml libgmp-dev libjs-mathjax doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev liblog4cpp5-dev libzmq3-dev texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev libclfft-dev libusb-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen libgl1-mesa-glx rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev libxml2-dev libcurl4-openssl-dev libcdk5-dev -y
+sudo apt install dpdk dpdk-dev libconfig++-dev libmp3lame-dev libshout-dev liburing-dev -y
+
+echo "Compiling python 3.11"
+mkdir -p /home/$USER/gnuradio
+cd /home/$USER/gnuradio
+wget https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tgz
+tar xvf Python-3.11.5.tgz
+rm Python-3.11.5.tgz 
+cd Python-3.11.5
+./configure --prefix=/home/$USER/gnuradio --enable-optimizations --with-lto --with-computed-gotos --with-system-ffi --enable-shared
+make -j `nproc`
+make install
+cd ..
+rm -rf Python-3.11.5 
+bin/python3.11 -m pip install --upgrade pip setuptools wheel
+ln -s bin/python3.11        bin/python3
+ln -s bin/python3.11        bin/python
+ln -s bin/pip3.11           bin/pip3
+ln -s bin/pip3.11           bin/pip
+ln -s bin/pydoc3.11         bin/pydoc
+ln -s bin/idle3.11          bin/idle
+ln -s bin/python3.11-config   bin/python-config
+
+#if architecture="arm"
+#then
+#sudo fallocate -l 2G /swapfile
+#sudo chmod 600 /swapfile
+#sudo mkswap /swapfile
+#sudo swapon /swapfile
+#fi
+echo "Setting up python environment"
+bin/python3.11 -m venv venv
+source venv/bin/activate
 pip3 install pybombs
+pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
+
+echo "Setting up python requirements"
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako PyYAML pygobject jsonschema pyqt5 click click-plugins pybind11 sphinx lxml zmq pycairo
+
+echo "Setting up pybombs"
 pybombs auto-config
 pybombs recipes add-defaults
 pybombs prefix init ~/gnuradio
@@ -50,8 +78,14 @@ source ./setup_env.sh
 cd ~/gnuradio/src
 mkdir hw
 cd hw
+
+echo "Buildung libuhd 4.4 with patches"
 git clone https://github.com/EttusResearch/uhd.git
+cd ~/gnuradio/src/hw/uhd
+wget https://raw.githubusercontent.com/bkerler/antsdr_uhd/uhd_4.4/patches/uhd44_microphase.diff
+patch -p1 < uhd44_microphase.diff
 cd ~/gnuradio/src/hw/uhd/host
+
 mkdir builddir
 cd builddir
 if architecture="arm64" || architecture="arm"
@@ -64,7 +98,7 @@ make -j`nproc`
 make install
 mkdir -p /home/$USER/gnuradio/share/uhd/images
 chown $USER:$USER -R /home/$USER/gnuradio
-#uhd_images_downloader
+uhd_images_downloader
 cd ..
 rm -rf builddir
 cd ..
@@ -114,7 +148,7 @@ sudo chown -R $USER:root /etc/udev/rules.d
 git clone https://github.com/rtlsdrblog/rtl-sdr-blog
 git clone https://github.com/pothosware/SoapySDR --recursive
 git clone https://github.com/myriadrf/LimeSuite.git --recursive
-git clone https://github.com/analogdevicesinc/libiio --recursive
+#git clone https://github.com/analogdevicesinc/libiio --recursive
 git clone https://github.com/analogdevicesinc/libad9361-iio --recursive
 git clone https://github.com/airspy/airspyhf --recursive
 git clone https://github.com/airspy/airspyone_host --recursive
@@ -125,6 +159,7 @@ git clone https://github.com/greatscottgadgets/hackrf --recursive
 cd rtl-sdr-blog
 sudo cp rtl-sdr.rules /etc/udev/rules.d/
 mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio -DINSTALL_UDEV_RULES=ON && make -j`nproc` && sudo make install && cd .. && rm -rf builddir && cd ..
+echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
 
 cd SoapySDR && build.sh && cd ..
 
@@ -139,17 +174,16 @@ cd airspyone_host
 sudo cp airspy-tools/52-airspy.rules /etc/udev/rules.d/
 build.sh && cd ..
 
-cd libiio && mkdir build2 && cd build2 && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && make install && cd .. && rm -rf build2 && cd ..
+#cd libiio && build.sh && cd ..
+wget https://github.com/analogdevicesinc/libiio/archive/refs/tags/v0.25.tar.gz
+tar xvf v0.25.tar.gz 
+rm v0.25.tar.gz
+cd libiio-0.25 && build.sh && cd ..
 cd libad9361-iio && build.sh && cd ..
 
 cd bladeRF/host 
-sudo cp misc/udev/88-nuand-* /etc/udev/rules.d/
-mkdir builddir && cd builddir
-cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio -DENABLE_NONFREE=TRUE
-make -j `nproc`
-make install
-cd ..
-rm -rf build
+cp misc/udev/88-nuand-* /etc/udev/rules.d/
+build.sh
 cd ../..
 
 cd libosmocore && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
@@ -162,15 +196,34 @@ if architecture="arm64"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-3.07.1.run
 	chmod +x SDRplay_RSP_API-ARM64-3.07.1.run
+        ./SDRplay_RSP_API-ARM64-3.07.1.run --target out --noexec
 elif architecture="arm"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM32-3.07.2.run
 	chmod +x SDRplay_RSP_API-ARM32-3.07.2.run
+        ./SDRplay_RSP_API-ARM32-3.07.2.run --target out --noexec
 elif architecture="386"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run
-	chmod +x SDRplay_RSP_API-Linux-3.07.1.run
+ 	chmod +x SDRplay_RSP_API-Linux-3.07.1.run
+        ./SDRplay_RSP_API-Linux-3.07.1.run --target out --noexec
 fi
+cd out
+cp 66-mirics.rules /etc/udev/rules.d/
+ARCH=`uname -m`
+VERS=3.07
+INSTALLLIBDIR="/home/$USER/gnuradio/lib"
+INSTALLINCDIR="/home/$USER/gnuradio/include"
+INSTALLBINDIR="/home/$USER/gnuradio/bin"
+cp -f inc/sdrplay_api*.h ${INSTALLINCDIR}/.
+rm -f ${INSTALLLIBDIR}/libsdrplay_api.so.${VERS}
+cp -f ${ARCH}/libsdrplay_api.so.${VERS} ${INSTALLLIBDIR}/.
+rm -f ${INSTALLLIBDIR}/libsdrplay_api.so.${MAJVERS}
+ln -s ${INSTALLLIBDIR}/libsdrplay_api.so.${VERS} ${INSTALLLIBDIR}/libsdrplay_api.so.${MAJVERS}
+rm -f ${INSTALLLIBDIR}/libsdrplay_api.so
+ln -s ${INSTALLLIBDIR}/libsdrplay_api.so.${MAJVERS} ${INSTALLLIBDIR}/libsdrplay_api.so
+cd ..
+rm -rf out
 
 # spectran V6
 git clone https://github.com/hb9fxq/libspectranstream
@@ -182,7 +235,7 @@ cd ~/gnuradio/src/hw_modules
 git clone https://github.com/pothosware/SoapyUHD --recursive
 git clone https://github.com/pothosware/SoapyRTLSDR --recursive
 git clone https://github.com/pothosware/SoapyAirspy --recursive
-git clone https://github.com/ast/SoapyAirspyHF
+git clone https://github.com/ast/SoapyAirspyHF --recursive
 git clone https://github.com/pothosware/SoapyRemote --recursive
 git clone https://github.com/pothosware/SoapyBladeRF --recursive
 git clone https://github.com/pothosware/SoapyMultiSDR --recursive
@@ -207,7 +260,7 @@ echo "Building gnuradio"
 cd ~/gnuradio/src
 git clone https://github.com/gnuradio/gnuradio --recursive
 cd gnuradio
-mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ../ -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ && make -j `nproc` && make install && cd .. && rm -rf build
+mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/home/$USER/gnuradio/bin/python3 -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ && make -j `nproc` && make install && cd .. && rm -rf build
 
 echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
@@ -273,8 +326,6 @@ git clone https://github.com/ghostop14/gr-symbolrate
 git clone https://github.com/ghostop14/gr-xcorrelate
 git clone https://github.com/ghostop14/gr-correctiq
 git clone https://github.com/ghostop14/gr-lfast
-
-git clone https://github.com/henningM1r/gr_DCF77_Receiver
 
 git clone https://github.com/jdemel/XFDMSync
 git clone https://github.com/jdemel/gr-gfdm
@@ -392,6 +443,9 @@ git clone https://github.com/bkerler/ais -b maint-3.10
 #sudo rm -rf /swapfile
 #fi
 sudo sysctl -w net.core.wmem_max=24862979
+
+sudo chown -R root:root /lib/udev/rules.d
+sudo chown -R root:root /etc/udev/rules.d
 
 # Optional for LiveDVD + Systemback
 while true; do
