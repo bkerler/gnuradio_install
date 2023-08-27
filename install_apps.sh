@@ -22,16 +22,31 @@ cd ~/gnuradio/flowgraphs
 git clone https://github.com/bkerler/ham2mon -b maint-3.10
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
 git clone https://github.com/bkerler/gnuradio_flowgraphs
-git clone https://github.com/muaddib1984/wavetrap
+
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
+
 git clone https://github.com/handiko/gr-APRS
 git clone https://github.com/handiko/gr-HDLC-AFSK
+
 git clone https://github.com/argilo/sdr-examples
+
 git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
+
 git clone https://github.com/RUB-SysSec/DroneSecurity
+
 git clone https://github.com/nootedandrooted/rtl-sdr-close-call-monitor
+
 git clone https://github.com/henningM1r/gr_DCF77_Receiver
+
+git clone https://github.com/muaddib1984/stillsuit
+git clone https://github.com/muaddib1984/gr-webspectrum
+git clone https://github.com/muaddib1984/wavetrap
+git clone https://github.com/muaddib1984/stillsuit
+git clone https://github.com/muaddib1984/arrakis
+
+wget https://kuenzi.dev/assets/files/sniff_NFC.grc
+git clone https://github.com/bkerler/GnuRadio-Wireshark-Example
 
 echo "Installing apps"
 sudo apt install fldigi qsstv inspectrum -y
@@ -40,8 +55,6 @@ pip3 install crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
 
-git clone https://github.com/muaddib1984/stillsuit
-git clone https://github.com/muaddib1984/arrakis
 git clone https://github.com/szpajder/dumpvdl2
 git clone https://github.com/ggerganov/whisper.cpp
 cd whisper.cpp
