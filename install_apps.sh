@@ -31,6 +31,7 @@ git clone https://github.com/argilo/sdr-examples
 git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
 git clone https://github.com/RUB-SysSec/DroneSecurity
 git clone https://github.com/nootedandrooted/rtl-sdr-close-call-monitor
+git clone https://github.com/henningM1r/gr_DCF77_Receiver
 
 echo "Installing apps"
 sudo apt install fldigi qsstv inspectrum -y
