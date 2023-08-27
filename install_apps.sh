@@ -38,6 +38,8 @@ git clone https://github.com/RUB-SysSec/DroneSecurity
 git clone https://github.com/nootedandrooted/rtl-sdr-close-call-monitor
 
 git clone https://github.com/henningM1r/gr_DCF77_Receiver
+git clone https://github.com/henningM1r/gr_MSF60_Receiver
+git clone https://github.com/henningM1r/gr_UK-AMDS_Receiver
 
 git clone https://github.com/muaddib1984/stillsuit
 git clone https://github.com/muaddib1984/gr-webspectrum
