@@ -58,6 +58,7 @@ pip3 install crcmod
 mkdir ~/gnuradio/utils
 cd ~/gnuradio/utils
 
+git clone https://github.com/SatDump/SatDump
 git clone https://github.com/jvde-github/AIS-catcher
 git clone https://github.com/szpajder/dumpvdl2
 git clone https://github.com/ggerganov/whisper.cpp
