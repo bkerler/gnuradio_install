@@ -93,6 +93,8 @@ gcc gpssim.c -lm -O3 -o gps-sdr-sim
 cp gpssim.c ~/gnuradio/bin
 cd ..
 
+git clone https://github.com/potto216/rf-analysis
+
 git clone https://github.com/josevcm/nfc-laboratory
 
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
