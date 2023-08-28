@@ -53,7 +53,7 @@ pybombs recipes add-defaults
 pybombs prefix init ~/gnuradio
 
 mkdir ~/gnuradio/bin
-echo "mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && make install && cd .. && rm -rf builddir" > ~/gnuradio/bin/build.sh
+echo "mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ -DPYTHON_EXECUTABLE=`pyenv prefix`/bin/python3 && make -j `nproc` && make install && cd .. && rm -rf builddir" > ~/gnuradio/bin/build.sh
 chmod +x ~/gnuradio/bin/build.sh
 echo "source /home/$USER/gnuradio/setup_env.sh" >> ~/.bashrc
 sudo chown -R $USER:root /lib/udev/rules.d
