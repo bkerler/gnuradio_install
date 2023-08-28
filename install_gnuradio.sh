@@ -245,7 +245,7 @@ echo "Building gnuradio"
 cd ~/gnuradio/src
 git clone https://github.com/gnuradio/gnuradio --recursive
 cd gnuradio
-PYENV_PREFIX = `pyenv prefix`
+export PYENV_PREFIX=`pyenv prefix`
 mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ -DPYTHON_EXECUTABLE=$PYENV_PREFIX/bin/python3 -Dpybind11_DIR=`$PYENV_PREFIX/bin/pybind11-config --cmakedir` && make -j `nproc` && make install && cd .. && rm -rf build
 
 echo "Updating modules .."
