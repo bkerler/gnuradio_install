@@ -30,23 +30,7 @@ sudo apt install dpdk dpdk-dev libconfig++-dev libmp3lame-dev libshout-dev libur
 echo "Compiling python 3.11"
 mkdir -p /home/$USER/gnuradio
 cd /home/$USER/gnuradio
-wget https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tgz
-tar xvf Python-3.11.5.tgz
-rm Python-3.11.5.tgz 
-cd Python-3.11.5
-./configure --prefix=/home/$USER/gnuradio --enable-optimizations --with-lto --with-computed-gotos --with-system-ffi --enable-shared
-make -j `nproc`
-make install
-cd ..
-rm -rf Python-3.11.5 
-bin/python3.11 -m pip install --upgrade pip setuptools wheel
-ln -s bin/python3.11        bin/python3
-ln -s bin/python3.11        bin/python
-ln -s bin/pip3.11           bin/pip3
-ln -s bin/pip3.11           bin/pip
-ln -s bin/pydoc3.11         bin/pydoc
-ln -s bin/idle3.11          bin/idle
-ln -s bin/python3.11-config   bin/python-config
+pyenv local 3.11.4
 
 #if architecture="arm"
 #then
@@ -56,8 +40,7 @@ ln -s bin/python3.11-config   bin/python-config
 #sudo swapon /swapfile
 #fi
 echo "Setting up python environment"
-bin/python3.11 -m venv venv
-source venv/bin/activate
+
 pip3 install pybombs
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
 
@@ -73,6 +56,8 @@ mkdir ~/gnuradio/bin
 echo "mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && make install && cd .. && rm -rf builddir" > ~/gnuradio/bin/build.sh
 chmod +x ~/gnuradio/bin/build.sh
 echo "source /home/$USER/gnuradio/setup_env.sh" >> ~/.bashrc
+sudo chown -R $USER:root /lib/udev/rules.d
+sudo chown -R $USER:root /etc/udev/rules.d
 cd ~/gnuradio
 source ./setup_env.sh
 cd ~/gnuradio/src
@@ -99,6 +84,7 @@ make install
 mkdir -p /home/$USER/gnuradio/share/uhd/images
 chown $USER:$USER -R /home/$USER/gnuradio
 uhd_images_downloader
+cp uhd/host/utils/uhd-usrp.rules /etc/udev/rules.d/
 cd ..
 rm -rf builddir
 cd ..
@@ -142,13 +128,11 @@ cd osmo-ir77/codec && make && cp ir77_ambe_decode ~/gnuradio/bin/ && make clean 
 
 echo "Building hw source"
 cd ~/gnuradio/src/hw
-sudo chown -R $USER:root /lib/udev/rules.d
-sudo chown -R $USER:root /etc/udev/rules.d
 
 git clone https://github.com/rtlsdrblog/rtl-sdr-blog
 git clone https://github.com/pothosware/SoapySDR --recursive
 git clone https://github.com/myriadrf/LimeSuite.git --recursive
-#git clone https://github.com/analogdevicesinc/libiio --recursive
+git clone https://github.com/analogdevicesinc/libiio --recursive
 git clone https://github.com/analogdevicesinc/libad9361-iio --recursive
 git clone https://github.com/airspy/airspyhf --recursive
 git clone https://github.com/airspy/airspyone_host --recursive
@@ -175,11 +159,7 @@ cd airspyone_host
 sudo cp airspy-tools/52-airspy.rules /etc/udev/rules.d/
 build.sh && cd ..
 
-#cd libiio && build.sh && cd ..
-wget https://github.com/analogdevicesinc/libiio/archive/refs/tags/v0.25.tar.gz
-tar xvf v0.25.tar.gz 
-rm v0.25.tar.gz
-cd libiio-0.25 && build.sh && cd ..
+cd libiio && git checkout b6028fd && build.sh && cd ..
 cd libad9361-iio && build.sh && cd ..
 
 cd bladeRF/host 
@@ -187,16 +167,13 @@ cp misc/udev/88-nuand-* /etc/udev/rules.d/
 build.sh
 cd ../..
 
-git clone https://github.com/ryanvolz/gr-hpsdr
-cd gr-hpsdr
-build.sh
-cd ..
-
 cd libosmocore && autoreconf -i && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
 
 cd hackrf/host
 sudo cp libhackrf/53-hackrf.rules /etc/udev/
 build.sh && cd ../..
+
+cd librx888 && build.sh && cd ..
 
 if architecture="arm64"
 then
@@ -268,11 +245,17 @@ echo "Building gnuradio"
 cd ~/gnuradio/src
 git clone https://github.com/gnuradio/gnuradio --recursive
 cd gnuradio
-mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/home/$USER/gnuradio/bin/python3 -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ && make -j `nproc` && make install && cd .. && rm -rf build
+PYENV_PREFIX = `pyenv prefix`
+mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ -DPYTHON_EXECUTABLE=$PYENV_PREFIX/bin/python3 -Dpybind11_DIR=`$PYENV_PREFIX/bin/pybind11-config --cmakedir` && make -j `nproc` && make install && cd .. && rm -rf build
 
 echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
+
+git clone https://github.com/ryanvolz/gr-hpsdr
+cd gr-hpsdr
+build.sh
+cd ..
 
 #git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
 git clone https://github.com/bkerler/gr-aaronia_rtsa --recursive
