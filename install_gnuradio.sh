@@ -388,6 +388,9 @@ git clone https://gitlab.com/bkerler/gr-leo
 git clone https://github.com/muaddib1984/gr-pyais_json
 
 cd gr-pdu_utils && build.sh && cd ..
+cd gr-sandia_utils && build.sh && cd ..
+cd gr-timing_utils && build.sh && cd ..
+cd gr-fhss_utils && build.sh && cd ..
 
 echo "Building modules .."
 for i in `ls -d */`;do echo ${i%%/} && cd ${i%%/} ; build.sh ; cd ..; done
