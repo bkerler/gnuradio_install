@@ -76,10 +76,12 @@ cd builddir
 export PYENV_PREFIX=`pyenv prefix`
 if architecture="arm64" || architecture="arm"
 then
-	cmake .. -DNEON_SIMD_ENABLE=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ -DPYTHON_EXECUTABLE=$PYENV_PREFIX/bin/python3
+	cmake .. -DNEON_SIMD_ENABLE=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/
 else
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/ -DPYTHON_EXECUTABLE=$PYENV_PREFIX/bin/python3
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/
 fi
+ln -s $PYENV_PREFIX/lib/libpython3.11.so.1.0 /home/$USER/gnuradio/lib/libpython3.11.so.1.0
+
 make -j`nproc`
 make install
 mkdir -p /home/$USER/gnuradio/share/uhd/images
