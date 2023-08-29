@@ -420,9 +420,6 @@ cd gr-zigbee && build.sh && cd ..
 cd gr-Zwave && build.sh && cd ..
 cd ../..
 
-git clone https://gitlab.com/larryth/tetra-kit
-cd tetra-kit && ./build.sh && cd ..
-
 git clone https://github.com/zeetwii/mockingbird
 cd mockingbird/gr-adsb && build.sh && cd ../..
 
