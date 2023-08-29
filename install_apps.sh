@@ -118,7 +118,7 @@ make install
 cd ..
 git clone https://github.com/BatchDrake/SigDigger --recursive
 cd SigDigger
-echo "INCLUDEPATH += /home/bjk/gnuradio/include/SuWidgets" >> SigDigger.pro
+echo "INCLUDEPATH += /home/$USER/gnuradio/include/SuWidgets" >> SigDigger.pro
 qmake SigDigger.pro PREFIX=/home/$USER/gnuradio
 make -j 4
 make install
