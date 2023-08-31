@@ -19,6 +19,8 @@ source ./setup_env.sh
 echo "Downloading scripts / flowgraphs"
 mkdir ~/gnuradio/flowgraphs
 cd ~/gnuradio/flowgraphs
+git clone https://github.com/argilo/sdr-examples
+
 git clone https://github.com/bkerler/ham2mon -b maint-3.10
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
 git clone https://github.com/bkerler/gnuradio_flowgraphs
@@ -26,10 +28,10 @@ git clone https://github.com/bkerler/gnuradio_flowgraphs
 git clone https://github.com/duggabe/gr-control
 git clone https://github.com/duggabe/gr-morse-code-gen
 
+git clone https://github.com/ereuter/PyEOT
+
 git clone https://github.com/handiko/gr-APRS
 git clone https://github.com/handiko/gr-HDLC-AFSK
-
-git clone https://github.com/argilo/sdr-examples
 
 git clone https://github.com/jhonnybonny/CleverJAM -b maint-3.10
 
