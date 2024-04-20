@@ -5,7 +5,7 @@
 # pacmd load-module module-loopback sink=MySink
 # pavucontrol to configure audio for apps
 # modprobe snd-aloop
-
+$MPATH = $PWD
 architecture=""
 case $(uname -m) in
     i386 | i686)   architecture="386" ;;
@@ -19,18 +19,19 @@ then
 	wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
 	echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
 	sudo apt update
-	sudo apt install opencl-headers intel-oneapi-runtime-opencl -y
-	sudo apt install intel-oneapi-runtime-compilers intel-opencl-icd clinfo -y
+	sudo apt install opencl-headers intel-oneapi-runtime-opencl-2024 -y
+	sudo apt install intel-oneapi-runtime-compilers-2024 intel-opencl-icd clinfo -y
 fi
 
 echo "Installing os requirements..."
-sudo apt install git cmake g++-12 libboost-all-dev libcairo2-dev castxml libgmp-dev libjs-mathjax doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev liblog4cpp5-dev libzmq3-dev texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev libclfft-dev libusb-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen libgl1-mesa-glx rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev libxml2-dev libcurl4-openssl-dev libcdk5-dev -y
+sudo apt install git cmake g++-12 libboost-all-dev libcairo2-dev castxml libgmp-dev libjs-mathjax doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev liblog4cpp5-dev libzmq3-dev texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev libclfft-dev libusb-dev libusb-1.0-0-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev libxml2-dev libcurl4-openssl-dev libcdk5-dev -y
 sudo apt install dpdk dpdk-dev libconfig++-dev libmp3lame-dev libshout-dev liburing-dev libgirepository1.0-dev -y
 
 echo "Compiling python 3.11"
 mkdir -p /home/$USER/gnuradio
 cd /home/$USER/gnuradio
-pyenv local 3.11.4
+pyenv install 3.11 -s
+pyenv local 3.11
 
 #if architecture="arm"
 #then
@@ -45,7 +46,7 @@ pip3 install pybombs
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
 
 echo "Setting up python requirements"
-pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako PyYAML pygobject jsonschema pyqt5 click click-plugins pybind11 sphinx lxml zmq pycairo
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako PyYAML pygobject jsonschema pyqt5 click click-plugins pybind11 sphinx lxml zmq pycairo gevent pyudev pyroute2 pyusb
 
 echo "Setting up pybombs"
 pybombs auto-config
@@ -87,8 +88,8 @@ make install
 mkdir -p /home/$USER/gnuradio/share/uhd/images
 chown $USER:$USER -R /home/$USER/gnuradio
 uhd_images_downloader
-cp uhd/host/utils/uhd-usrp.rules /etc/udev/rules.d/
 cd ..
+cp utils/uhd-usrp.rules /etc/udev/rules.d/
 rm -rf builddir
 cd ..
 
@@ -151,8 +152,10 @@ echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-
 
 cd SoapySDR && build.sh && cd ..
 
-cd LimeSuite && git checkout stable && mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio && make -j$(nproc) && make install && cd .. && rm -rf builddir 
-cd udev-rules && sudo ./install.sh && cd ..
+cd LimeSuite && git checkout stable
+git apply $MPATH/limesuite.patch
+mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio && make -j$(nproc) && make install && cd .. && rm -rf builddir 
+cd udev-rules && sudo ./install.sh && cd .. && cd ..
 
 cd airspyhf
 sudo cp tools/52-airspyhf.rules /etc/udev/rules.d/
@@ -188,7 +191,7 @@ then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM32-3.07.2.run
 	chmod +x SDRplay_RSP_API-ARM32-3.07.2.run
         ./SDRplay_RSP_API-ARM32-3.07.2.run --target out --noexec
-elif architecture="386"
+elif architecture="amd64"
 then
 	wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run
  	chmod +x SDRplay_RSP_API-Linux-3.07.1.run
@@ -236,7 +239,7 @@ cd SoapyRTLSDR && build.sh && cd ..
 cd SoapyAirspy && build.sh && cd ..
 cd SoapyRemote && build.sh && cd ..
 cd SoapyBladeRF && build.sh && cd ..
-cd SoapySDRPlay3 && build.sh && cd ..
+#cd SoapySDRPlay3 && build.sh && cd ..
 cd SoapyMultiSDR && build.sh && cd ..
 cd SoapyBladeRF && build.sh && cd ..
 cd SoapyPlutoSDR && build.sh && cd ..
@@ -259,8 +262,7 @@ cd gr-hpsdr
 build.sh
 cd ..
 
-#git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
-git clone https://github.com/bkerler/gr-aaronia_rtsa --recursive
+git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
 
 # Maintainers might have 3.10 forks but do not accept PR
 git clone https://github.com/bkerler/gr-iridium -b maint-3.10
@@ -324,7 +326,7 @@ git clone https://github.com/ghostop14/gr-lfast
 git clone https://github.com/igorauad/gr-dvbs2rx --recursive
 
 git clone https://github.com/jdemel/XFDMSync
-git clone https://github.com/jdemel/gr-gfdm
+git clone https://github.com/bkerler/gr-gfdm
 
 git clone https://github.com/muaddib1984/gr-JAERO -b dev
 
@@ -338,8 +340,8 @@ git clone https://github.com/krakenrf/gr-krakensdr
 git clone https://github.com/MarcinWachowiak/gr-aoa
 git clone https://github.com/rpp0/gr-lora
 git clone https://github.com/tapparelj/gr-lora_sdr
-git clone https://github.com/gnuradio/gr-inspector -b maint-3.10
-git clone https://github.com/mobilinkd/m17-cxx-demod
+git clone https://github.com/bkerler/gr-inspector -b maint-3.10
+git clone https://github.com/bkerler/m17-cxx-demod
 git clone https://github.com/redwiretechnologies/gr-enocean
 git clone https://github.com/pavelyazev/gr-dect2
 git clone https://github.com/jacobagilbert/gr-sigmf_utils
