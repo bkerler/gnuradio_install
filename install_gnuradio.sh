@@ -248,9 +248,9 @@ cd SoapyBladeRF && build.sh && cd ..
 cd SoapyMultiSDR && build.sh && cd ..
 cd SoapyBladeRF && build.sh && cd ..
 cd SoapyPlutoSDR && build.sh && cd ..
-cd SoapyHackRF && build.sh && cd ..
 cd SoapySpectranV6 && build.sh && cd ..
 cd SoapyRX888 && build.sh && cd ..
+cd SoapyHackRF && build.sh && cd ..
 
 echo "Building gnuradio"
 cd ~/gnuradio/src
@@ -433,7 +433,7 @@ cd mockingbird/gr-adsb && build.sh && cd ../..
 git clone https://github.com/bkerler/gr-m17 -b maint-3.10
 cd gr-m17 && build.sh && cd ..
 
-git clone https://github.com/proto17/dji_droneid -b gr-droneid-update-3.10
+git clone https://github.com/bkerler/dji_droneid -b gr-droneid-update-3.10
 cd dji_droneid/gnuradio/gr-droneid && build.sh && cd ../../..
 
 git clone https://github.com/bkerler/ais-simulator -b maint-3.10
