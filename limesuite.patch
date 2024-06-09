@@ -1,0 +1,12 @@
+diff --git a/src/lms7002m_mcu/MCU_File.cpp b/src/lms7002m_mcu/MCU_File.cpp
+index f1b6f667..0f423c6f 100644
+--- a/src/lms7002m_mcu/MCU_File.cpp
++++ b/src/lms7002m_mcu/MCU_File.cpp
+@@ -1,6 +1,7 @@
+ #include "MCU_File.h"
+ #include <algorithm>
+ #include <iostream>
++#include <cstdint>
+ 
+ using namespace std;
+ 
