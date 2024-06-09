@@ -24,7 +24,10 @@ then
 fi
 
 echo "Installing os requirements..."
-sudo apt install git cmake g++-12 libboost-all-dev libcairo2-dev castxml libgmp-dev libjs-mathjax doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev liblog4cpp5-dev libzmq3-dev texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev libclfft-dev libusb-dev libusb-1.0-0-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libfltk1.1-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev libxml2-dev libcurl4-openssl-dev libcdk5-dev -y
+sudo apt install git cmake g++-12 libboost-all-dev libcairo2-dev castxml libgmp-dev libjs-mathjax doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev liblog4cpp5-dev libzmq3-dev texlive-latex-base libqt5svg5-dev libunwind-dev libthrift-dev libspdlog-dev libclfft-dev libusb-dev libusb-1.0-0-dev pavucontrol libsndfile1-dev libusb-1.0-0-dev libportaudio-ocaml-dev libportaudio2 bison flex libavahi-common-dev libavahi-client-dev libzstd-dev python3-dev p7zip-full libtalloc-dev libpcsclite-dev libgnutls28-dev libmnl-dev libsctp-dev libpcap-dev liblttng-ctl-dev liblttng-ust-dev libfaac-dev libcppunit-dev libitpp-dev libfreetype-dev libglfw3-dev libsamplerate0-dev libfaad-dev clang-format libhidapi-dev libasound2-dev texlive-latex-base qttools5-dev-tools qttools5-dev pybind11-dev libssl-dev libtiff5-dev libi2c-dev g++ libsqlite3-dev freeglut3-dev cpputest qtmultimedia5-dev libvorbis-dev libogg-dev libqt5multimedia5-plugins checkinstall libqcustomplot-dev libqt5svg5-dev gettext libaio-dev screen rapidjson-dev libgsm1-dev libcodec2-dev libqt5websockets5-dev libxml2-dev libcurl4-openssl-dev libcdk5-dev -y
+# Not part of ubuntu 22.04 LTS
+sudo apt install libfltk1.1-dev -y
+
 sudo apt install dpdk dpdk-dev libconfig++-dev libmp3lame-dev libshout-dev liburing-dev libgirepository1.0-dev -y
 
 echo "Compiling python 3.11"
@@ -81,6 +84,7 @@ then
 else
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio/
 fi
+mkdir -p /home/$USER/gnuradio/lib
 ln -s $PYENV_PREFIX/lib/libpython3.11.so.1.0 /home/$USER/gnuradio/lib/libpython3.11.so.1.0
 
 make -j`nproc`
