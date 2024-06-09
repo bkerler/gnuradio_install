@@ -157,7 +157,8 @@ echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-
 cd SoapySDR && build.sh && cd ..
 
 cd LimeSuite && git checkout stable
-git apply $MPATH/limesuite.patch
+wget https://raw.githubusercontent.com/bkerler/gnuradio_install/main/limesuite.patch
+git apply limesuite.patch
 mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnuradio && make -j$(nproc) && make install && cd .. && rm -rf builddir 
 cd udev-rules && sudo ./install.sh && cd .. && cd ..
 
