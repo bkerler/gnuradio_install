@@ -148,6 +148,7 @@ git clone https://github.com/osmocom/libosmocore --recursive
 git clone https://github.com/Nuand/bladeRF --recursive
 git clone https://github.com/greatscottgadgets/hackrf --recursive
 git clone https://github.com/cozycactus/librx888 --recursive
+git clone https://github.com/rfnm/librfnm --recursive
 
 cd rtl-sdr-blog
 sudo cp rtl-sdr.rules /etc/udev/rules.d/
@@ -155,6 +156,7 @@ mkdir builddir && cd builddir && cmake .. -DCMAKE_INSTALL_PREFIX=/home/$USER/gnu
 echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
 
 cd SoapySDR && build.sh && cd ..
+cd librfnm && build.sh && cd ..
 
 cd LimeSuite && git checkout stable
 wget https://raw.githubusercontent.com/bkerler/gnuradio_install/main/limesuite.patch
@@ -238,7 +240,9 @@ git clone https://github.com/pothosware/SoapyPlutoSDR --recursive
 git clone https://github.com/pothosware/SoapyHackRF --recursive
 git clone https://github.com/hb9fxq/SoapySpectranV6 --recursive
 git clone https://github.com/cozycactus/SoapyRX888 --recursive
+git clone https://github.com/rfnm/soapy-rfnm --recursive
 
+cd soapy-rfnm && build.sh && cd ..
 cd SoapyUHD && build.sh && cd ..
 cd SoapyRTLSDR && build.sh && cd ..
 cd SoapyAirspy && build.sh && cd ..
