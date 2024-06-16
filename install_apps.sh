@@ -101,24 +101,24 @@ git clone https://github.com/potto216/rf-analysis
 git clone https://github.com/josevcm/nfc-laboratory
 
 git clone https://github.com/AlexandreRouma/SDRPlusPlus
-cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio && make -j `nproc` && sudo make install && cd ../..
+cd SDRPlusPlus && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio -DOPT_BUILD_LIMESDR_SOURCE=ON -DOPT_BUILD_M17_DECODER=ON -DOPT_BUILD_METEOR_DEMODULATOR=ON -DOPT_BUILD_NEW_PORTAUDIO_SINK=ON -DOPT_BUILD_PAGER_DECODER=ON -DOPT_BUILD_RECORDER=ON -DOPT_BUILD_SOAPY_SOURCE=ON && make -j `nproc` && sudo make install && cd ../..
 
 git clone https://github.com/gqrx-sdr/gqrx
 cd gqrx && build.sh && cd ..
 
 mkdir SigDigger
 cd SigDigger
-git clone https://github.com/BatchDrake/sigutils --recursive
+git clone https://github.com/BatchDrake/sigutils -b develop --recursive
+git clone https://github.com/BatchDrake/suscan -b develop --recursive
+git clone https://github.com/BatchDrake/SuWidgets -b develop --recursive
+git clone https://github.com/BatchDrake/SigDigger -b develop --recursive
 cd sigutils && build.sh && cd ..
-git clone https://github.com/BatchDrake/suscan --recursive
 cd suscan && build.sh && cd ..
-git clone https://github.com/BatchDrake/SuWidgets
 cd SuWidgets
 qmake SuWidgets.pro PREFIX=/home/$USER/gnuradio
 make -j 4
 make install
 cd ..
-git clone https://github.com/BatchDrake/SigDigger --recursive
 cd SigDigger
 echo "INCLUDEPATH += /home/$USER/gnuradio/include/SuWidgets" >> SigDigger.pro
 qmake SigDigger.pro PREFIX=/home/$USER/gnuradio
@@ -145,11 +145,11 @@ cd rtl_433
 build.sh
 cd ..
 
-git clone https://github.com/mikeryan/ice9-bluetooth-sniffer
+git clone https://github.com/bkerler/ice9-bluetooth-sniffer -b working_uhd_and_soapy_new
 cd ice9-bluetooth-sniffer
 mkdir builddir
 cd builddir
-cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio -DHACKRF_INCLUDE_DIR=~/gnuradio/include -DLIQUID_INCLUDE_DIR=~/gnuradio/include
+cmake .. -DCMAKE_INSTALL_PREFIX=~/gnuradio
 make
 make install
 cd ..
