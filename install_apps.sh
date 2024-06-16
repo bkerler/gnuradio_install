@@ -21,6 +21,7 @@ mkdir ~/gnuradio/flowgraphs
 cd ~/gnuradio/flowgraphs
 git clone https://github.com/argilo/sdr-examples
 
+git clone https://gitlab.com/crankylinuxuser/meshtastic_sdr
 git clone https://github.com/bkerler/ham2mon -b maint-3.10
 git clone https://github.com/bkerler/gr-pocsag -b maint-3.10
 git clone https://github.com/bkerler/gnuradio_flowgraphs
