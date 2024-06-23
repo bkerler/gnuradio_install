@@ -149,6 +149,7 @@ git clone https://github.com/Nuand/bladeRF --recursive
 git clone https://github.com/greatscottgadgets/hackrf --recursive
 git clone https://github.com/cozycactus/librx888 --recursive
 git clone https://github.com/rfnm/librfnm --recursive
+git clone https://github.com/bkerler/gr-qs1r --recursive
 
 cd rtl-sdr-blog
 sudo cp rtl-sdr.rules /etc/udev/rules.d/
