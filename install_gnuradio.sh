@@ -49,7 +49,7 @@ pip3 install pybombs
 pip3 install git+https://github.com/pyqtgraph/pyqtgraph@develop
 
 echo "Setting up python requirements"
-pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako PyYAML pygobject jsonschema pyqt5 click click-plugins pybind11 sphinx lxml zmq pycairo gevent pyudev pyroute2 pyusb
+pip3 install numpy scipy pygccxml bitstring scapy loudify pandas pytest mako PyYAML pygobject==3.50.1 jsonschema pyqt5 click click-plugins pybind11==1.8 sphinx lxml zmq pycairo gevent pyudev pyroute2 pyusb
 
 echo "Setting up pybombs"
 pybombs auto-config
