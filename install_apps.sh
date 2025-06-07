@@ -118,7 +118,7 @@ cd suscan && build.sh && cd ..
 cd SuWidgets
 qmake SuWidgets.pro PREFIX=/home/$USER/gnuradio
 make -j 4
-make install
+sudo make install
 cd ..
 cd SigDigger
 echo "INCLUDEPATH += /home/$USER/gnuradio/include/SuWidgets" >> SigDigger.pro
