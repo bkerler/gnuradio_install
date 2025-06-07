@@ -267,10 +267,10 @@ echo "Updating modules .."
 mkdir ~/gnuradio/src/modules
 cd ~/gnuradio/src/modules
 
-git clone https://github.com/ryanvolz/gr-hpsdr
-cd gr-hpsdr
-build.sh
-cd ..
+#git clone https://github.com/ryanvolz/gr-hpsdr
+#cd gr-hpsdr
+#build.sh
+#cd ..
 
 git clone https://github.com/hb9fxq/gr-aaronia_rtsa --recursive
 
