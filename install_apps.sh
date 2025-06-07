@@ -125,7 +125,7 @@ echo "INCLUDEPATH += /home/$USER/gnuradio/include/SuWidgets" >> SigDigger.pro
 qmake SigDigger.pro PREFIX=/home/$USER/gnuradio
 make -j 4
 make install
-cd ..
+cd ../..
 
 wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.0/sdr-trunk-linux-x86_64-v0.5.0.zip
 7z x sdr-trunk-linux-x86_64-v0.5.0.zip
