@@ -123,7 +123,7 @@ wget http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.2.0.tar.gz
 tar xzvf rtaudio-5.2.0.tar.gz
 rm rtaudio-5.2.0.tar.gz
 git clone https://github.com/gnuradio/volk --recursive
-git clone https://github.com/greatscottgadgets/libbtbb --recursive
+git clone https://github.com/bkerler/libbtbb --recursive
 git clone https://github.com/osmocom/libosmo-dsp --recursive
 git clone https://github.com/osmocom/osmo-ir77 --recursive
 cd liquid-dsp && ./bootstrap.sh && ./configure --prefix=/home/$USER/gnuradio && make -j `nproc` && make install && make clean && cd ..
