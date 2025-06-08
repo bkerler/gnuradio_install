@@ -53,6 +53,7 @@ git clone https://github.com/muaddib1984/arrakis
 wget https://kuenzi.dev/assets/files/sniff_NFC.grc
 git clone https://github.com/bkerler/GnuRadio-Wireshark-Example
 git clone https://github.com/SanchezCris/SDR-Automatic-Speech-Recognition
+git clone https://github.com/tpl2go/LTESniffer --recursive
 
 echo "Installing apps"
 sudo apt install fldigi qsstv inspectrum -y
